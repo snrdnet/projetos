@@ -1,0 +1,1231 @@
+-- phpMyAdmin SQL Dump
+-- version 2.10.3
+-- http://www.phpmyadmin.net
+-- 
+-- Servidor: localhost
+-- Tempo de Geração: Ago 09, 2012 as 12:27 PM
+-- Versão do Servidor: 5.0.51
+-- Versão do PHP: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- 
+-- Banco de Dados: `nrqw`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `medalhas`
+-- 
+
+CREATE TABLE `medalhas` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(32) NOT NULL,
+  `mtOuro` int(3) NOT NULL default '0',
+  `mtPrata` int(3) NOT NULL default '0',
+  `mtBronze` int(3) NOT NULL default '0',
+  `duOuro` int(3) NOT NULL default '0',
+  `duPrata` int(3) NOT NULL default '0',
+  `duBronze` int(3) NOT NULL default '0',
+  `evOuro` int(3) NOT NULL default '0',
+  `evPrata` int(3) NOT NULL default '0',
+  `evBronze` int(3) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `medalhas`
+-- 
+
+INSERT INTO `medalhas` VALUES (1, 'NeoRider', 0, 0, 0, 0, 0, 0, 1, 0, 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `noticias`
+-- 
+
+CREATE TABLE `noticias` (
+  `id` int(11) NOT NULL auto_increment,
+  `data` varchar(32) NOT NULL,
+  `tipo` varchar(32) NOT NULL,
+  `titulo` varchar(32) NOT NULL,
+  `noticia` text NOT NULL,
+  `por` varchar(20) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+-- 
+-- Extraindo dados da tabela `noticias`
+-- 
+
+INSERT INTO `noticias` VALUES (1, '8/12/2010', '1', 'Leia isso antes de acessar!!!!', 'Atecao o site esta em faze de construcao porfavor nao mexam em nada apenas cadastren-se e jogem!!!', 'NeoRider');
+INSERT INTO `noticias` VALUES (2, '10/12/10 - 02:39 am', '1', 'P&aacute;ginas j&aacute; criadas', '[cor=#FF6600]\r\nBom  vou direto ao asunto&cedil; as p&aacute;ginas j&aacute; criadas por mim e o Falken foram:\r\nPainel usu&aacute;rio (exeto page de add foto);\r\nCadastro - revisado (havia erros na p&aacute;gina);\r\npesquisar - sistema de pesquisa de char pronto![/cor]    ', 'NeoRider');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `site_perguntas`
+-- 
+
+CREATE TABLE `site_perguntas` (
+  `id` int(11) NOT NULL auto_increment,
+  `pergunta` varchar(50) NOT NULL,
+  `status` int(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `site_perguntas`
+-- 
+
+INSERT INTO `site_perguntas` VALUES (1, 'O que voc&ecirc; axou do Jogo?', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `site_respostas`
+-- 
+
+CREATE TABLE `site_respostas` (
+  `id` int(11) NOT NULL auto_increment,
+  `pid` int(11) NOT NULL,
+  `unico` int(1) NOT NULL,
+  `resposta` varchar(50) NOT NULL,
+  `voto` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+-- 
+-- Extraindo dados da tabela `site_respostas`
+-- 
+
+INSERT INTO `site_respostas` VALUES (1, 1, 1, 'Ótimo', 3);
+INSERT INTO `site_respostas` VALUES (2, 1, 2, 'Bom', 5);
+INSERT INTO `site_respostas` VALUES (3, 1, 3, '+ ou -', 1);
+INSERT INTO `site_respostas` VALUES (4, 1, 4, 'Ruim', 0);
+INSERT INTO `site_respostas` VALUES (5, 1, 5, 'péssimo', 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `site_votalogins`
+-- 
+
+CREATE TABLE `site_votalogins` (
+  `id` int(11) NOT NULL auto_increment,
+  `pid` int(11) NOT NULL,
+  `login` varchar(32) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+-- 
+-- Extraindo dados da tabela `site_votalogins`
+-- 
+
+INSERT INTO `site_votalogins` VALUES (2, 1, 'NeoRider');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_achievements`
+-- 
+
+CREATE TABLE `wqw_achievements` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(32) NOT NULL,
+  `achievement_name` varchar(221) NOT NULL,
+  `achievement_image` varchar(221) NOT NULL,
+  `achievement_info` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_achievements`
+-- 
+
+INSERT INTO `wqw_achievements` VALUES (1, 'NeoRider', 'Founder', 'founder.jpg', 'Fundadores oficiais do Neo Rider Quest Worlds');
+INSERT INTO `wqw_achievements` VALUES (2, 'NeoRider', 'Beta-Tester', 'beta-tester.jpg', 'Jogador que participou do Beta Teste Pré-Inalgurativo');
+INSERT INTO `wqw_achievements` VALUES (3, 'NeoRider', 'Beta Character', 'beta-char.jpg', 'Jogador que participou da Inalguração');
+INSERT INTO `wqw_achievements` VALUES (4, 'NeoRider', 'Member', 'member.jpg', 'Pagante de plano VIP');
+INSERT INTO `wqw_achievements` VALUES (5, 'NeoRider', 'PTR Tester', 'ptr.jpg', 'Jogador que participou do teste do PTR');
+INSERT INTO `wqw_achievements` VALUES (6, 'NeoRider', 'Evento Sexta Feira 13', 'friday13.jpg', 'Jogador que participou do evento Sexta Feira 13');
+INSERT INTO `wqw_achievements` VALUES (7, '12345aaa', 'Beta Character', 'beta-char', 'Jogador que participou da inalguração');
+INSERT INTO `wqw_achievements` VALUES (8, 'xanus', 'Beta Character', 'beta-char', 'Jogador que participou da inalguração');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_classes`
+-- 
+
+CREATE TABLE `wqw_classes` (
+  `id` int(11) NOT NULL auto_increment,
+  `className` varchar(60) NOT NULL,
+  `classid` tinyint(3) NOT NULL,
+  `skills` text NOT NULL,
+  `sStats` text,
+  `sDesc` text,
+  `sClassCat` varchar(10) default 'M1',
+  `aMRM` text,
+  `passives` varchar(40) default '1,2',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=20 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_classes`
+-- 
+
+INSERT INTO `wqw_classes` VALUES (1, 'Alpha Pirate', 16, '1,2,3,4,5', 'Starter Class. EPIC!!!', 'The PokePirate is a epic class! They love having sea pokemon and battling ground pokemon! If you are a Groudon class (IT DOES EXIST) you should watch out!!!', 'M1', '"PokePirates gain mana when they:","-Strike an enemy in combat (more effective on crits)","-Are struck by an enemy in combat\\""', '1,2');
+INSERT INTO `wqw_classes` VALUES (2, 'Water Mage', 3, '7,8,9,10,11', 'Mages favor Intellect and Wisdom', 'Mages are the quintessential magic user. They attack from a distance, able to cause great harm or restrict a target''s actions.', 'C1', '"Water Mages gain mana from all hits landed in combat, and especially on crits.  The amount depends on damage relative to *their own* HP total."', '10,11');
+INSERT INTO `wqw_classes` VALUES (3, 'Soulweaver', 4, '12,13,14,15,16', 'SoulWeavers favor Strength, Dexterity, and Intellect', 'Ninjas operate in silence secrecy. They are capable fighters, but prefer to attack quickly and decisively, eliminating the threat of resistance.', 'M3', '"SoulWeavers gain mana when they:","-Land the first strike in combat","-Strike an enemy in combat (more effective on crits)","-Cast \\"Shadowburn\\" on a target without \\"Shadowblade\\""', '6,7');
+INSERT INTO `wqw_classes` VALUES (4, 'Palkia', 5, '7,17,18,19,20', 'Palkia favors Strength and Dexterity', 'Palkia is a very powerful, experimental Pokemon.  It can launch powerful attacks and many enemies at once.', 'M3', '"Palkia''s gain mana from all hits landed in combat, and especially on crits.  The amount depends on damage relative to *their own* HP total."', '8,9');
+INSERT INTO `wqw_classes` VALUES (5, 'Dialga', 7, '7,26,27,28,29', 'Dialga is cool!', 'Dialga, Legendary Pokemon, Designed by Weakjounin, This pokemon will blow your mind! Get this to rank 10 to OWN!', 'M1', '"Dialga''s gain mana when they:","-Strike an enemy in combat (more effective on crits)","-Are struck by an enemy in combat\\""', '1,2');
+INSERT INTO `wqw_classes` VALUES (6, 'Groudon', 10, '45,41,42,43,44', 'Groudons are WIN!', 'Groudon, Legendary Ground Pokemon, Always battlin with Kyogre!', 'M1', '"Groudons gain mana when they:","-Strike an enemy in combat (more effective on crits)","-Are struck by an enemy in combat\\""', '1,2');
+INSERT INTO `wqw_classes` VALUES (7, 'Voltaire', 11, '7,26,27,28,29', 'Voltaire''s are like Musical?!', 'Failing Musician!', 'M1', '"Voltaire''s gain mana when they:","-Do an AFK Dance","-Killed by enemy on combat, epic isn''t it?\\""', '1,2');
+INSERT INTO `wqw_classes` VALUES (9, 'Beta Berserk', 9, '45,41,42,43,44', 'Ahh, the old times...', 'Ahh, the old times...', 'M1', '"Beta Berserks gain mana when they:","-Strike an enemy in combat (more effective on crits)","-Are struck by an enemy in combat\\""', '1,2');
+INSERT INTO `wqw_classes` VALUES (13, 'Mage', 13, '7,8,9,10,11', 'Mages favor Intellect and Wisdom', 'Mages are the quintessential magic user. They attack from a distance, able to cause great harm or restrict a target''s actions.', 'C1', '"Water Mages gain mana from all hits landed in combat, and especially on crits.  The amount depends on damage relative to *their own* HP total."', '10,11');
+INSERT INTO `wqw_classes` VALUES (14, 'Rogue', 14, '7,8,9,10,11', 'Mages favor Intellect and Wisdom', 'Mages are the quintessential magic user. They attack from a distance, able to cause great harm or restrict a target''s actions.', 'C1', '"Water Mages gain mana from all hits landed in combat, and especially on crits.  The amount depends on damage relative to *their own* HP total."', '10,11');
+INSERT INTO `wqw_classes` VALUES (15, 'Healer', 15, '7,8,9,10,11', 'Mages favor Intellect and Wisdom', 'Mages are the quintessential magic user. They attack from a distance, able to cause great harm or restrict a target''s actions.', 'C1', '"Water Mages gain mana from all hits landed in combat, and especially on crits.  The amount depends on damage relative to *their own* HP total."', '10,11');
+INSERT INTO `wqw_classes` VALUES (16, 'Hypiron Class', 17, '7,46,47,48,49', NULL, NULL, 'M1', NULL, '1,2');
+INSERT INTO `wqw_classes` VALUES (19, 'Warrior Class', 19, '1,2,3,4,5', NULL, NULL, 'M1', NULL, '1,2');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_equipment`
+-- 
+
+CREATE TABLE `wqw_equipment` (
+  `id` int(11) NOT NULL auto_increment,
+  `itemID` int(11) NOT NULL,
+  `sLink` varchar(32) NOT NULL,
+  `sElmt` varchar(16) NOT NULL default 'None',
+  `bStaff` tinyint(1) NOT NULL default '0',
+  `iRng` smallint(8) NOT NULL default '10',
+  `iDPS` smallint(8) NOT NULL default '100',
+  `bCoins` tinyint(1) NOT NULL,
+  `sES` varchar(16) NOT NULL,
+  `sType` varchar(16) NOT NULL,
+  `iCost` int(16) NOT NULL,
+  `iRty` tinyint(1) NOT NULL,
+  `iLvl` smallint(3) NOT NULL,
+  `sIcon` varchar(16) NOT NULL,
+  `iQty` tinyint(3) NOT NULL,
+  `iHrs` smallint(3) NOT NULL,
+  `sFile` varchar(128) NOT NULL,
+  `iStk` tinyint(1) NOT NULL,
+  `sDesc` text NOT NULL,
+  `bUpg` tinyint(1) NOT NULL,
+  `sName` varchar(40) NOT NULL,
+  `bTemp` tinyint(1) NOT NULL default '0',
+  `sFaction` varchar(16) NOT NULL default 'None',
+  `iClass` int(11) NOT NULL default '0',
+  `FactionID` int(11) NOT NULL default '1',
+  `iReqRep` int(11) NOT NULL default '0',
+  `iReqCP` int(11) NOT NULL default '0',
+  `classID` int(11) NOT NULL default '0',
+  `EnhID` int(11) NOT NULL default '1',
+  `sReqQuests` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4675 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_equipment`
+-- 
+
+INSERT INTO `wqw_equipment` VALUES (2, 1, 'Sword01', 'None', 0, 10, 100, 0, 'Weapon', 'Sword', 0, 0, 1, 'iwsword', 1, 50, 'items/swords/sword01.swf', 1, 'Basic Sword, given to all adventurers.', 0, 'Default Sword', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (3, 3, 'PalaBlade', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 0, 0, 1, 'iwsword', 1, 50, 'items/swords/PalaBlade.swf', 1, 'By Weakjounin!', 0, 'Pala Blade', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4, 5, 'BKB', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 1500, 35, 10, 'iwsword', 1, 50, 'items/swords/bkb.swf', 1, 'By Weakjounin!', 0, 'Black Knight Blade', 0, 'None', 0, 1, 0, 0, 0, 1, '11');
+INSERT INTO `wqw_equipment` VALUES (5, 6, 'EagleBlade', 'None', 0, 10, 100, 0, 'Weapon', 'Sword', 150000, 0, 1, 'iwsword', 1, 50, 'items/swords/EagleBlade.swf', 1, 'By Weakjounin', 0, 'Eagle Blade', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (6, 7, '5025_SilverDicer_Wep', 'None', 0, 10, 100, 0, 'Weapon', 'Sword', 200000, 0, 1, 'iwsword', 1, 50, 'items/swords/5025_SilverDicer_Wep.swf', 1, 'Awesome beans with sauce!\r\n', 0, 'Silver Dicer', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (7, 8, 'Alteonchaosblade', 'None', 0, 10, 100, 0, 'Weapon', 'Sword', 200000, 0, 1, 'iwsword', 1, 50, 'items/swords/Alteonchaosblade.swf', 1, 'The Blade of the GOOD KING turned in to CHAOS?! WTF IS WRONG WITH THIS WORLD!', 0, 'Alteon Chaos Blade', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (8, 9, 'Anduril', 'None', 0, 10, 100, 0, 'Weapon', 'Sword', 120000, 0, 1, 'iwsword', 1, 50, 'items/swords/Anduril.swf', 1, 'AHMG', 0, 'Anduril', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (9, 10, 'AracknightPolearm', 'None', 0, 10, 100, 0, 'Weapon', 'Sword', 120000, 0, 1, 'iwsword', 1, 50, 'items/swords/AracknightPolearm.swf', 1, 'WIN', 0, 'Aracknight Polearm', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (10, 11, 'Arpurit', 'None', 0, 10, 100, 0, 'Weapon', 'Sword', 150000, 0, 1, 'iwsword', 1, 50, 'items/swords/Arpurit.swf', 1, 'ArrrPurrrrrrrItttttttt', 0, 'Arpurit', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (51, 51, 'Voltaire', 'None', 0, 10, 100, 0, 'ar', 'Class', 150000, 0, 1, 'iiclass', 1, 50, 'Voltaire_skin.swf ', 1, 'Voltaire from the concert is selling his clothes now', 0, 'Voltaire', 0, 'None', 0, 1, 0, 0, 11, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (52, 52, 'Voltairehat', 'None', 0, 10, 100, 0, 'he', 'Helm', 150000, 0, 1, 'iihelm', 1, 50, 'items/helms/Voltairehat.swf', 1, 'SOLD! Requested by Sir Father Nature The 2nd', 0, 'Voltaire''s Hat', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (53, 53, 'Voltaireguitar1', 'None', 0, 10, 100, 0, 'Weapon', 'Sword', 150000, 0, 30, 'iwsword', 1, 50, 'items/swords/Voltaireguitar1.swf', 1, 'GUITAR HEAVEN OPENS FOR YOU!', 0, 'Voltaire''s Guitar', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (54, 54, 'Tomix', 'None', 0, 10, 100, 0, 'ar', 'Class', 150000, 0, 1, 'iiclass', 1, 0, 'Tomix_skin.swf', 1, 'IM A SOULMAN! TOE DOE DOE DOE TOE DOE DOE DOE', 0, 'Soulweaver', 0, 'None', 0, 1, 0, 0, 4, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (55, 55, 'MageWater', 'None', 0, 10, 100, 0, 'ar', 'Class', 150000, 0, 1, 'iiclass', 0, 1, 'mage-water.swf', 0, 'Water is Freakin'' cold, just like my Ice Cream!', 0, 'Water Mage', 0, 'None', 0, 1, 0, 0, 3, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (56, 16, 'Pirate2', 'None', 0, 10, 100, 0, 'ar', 'Class', 0, 0, 1, 'iiclass', 0, 0, 'pirate2_skin.swf', 1, 'The basic class in MTW', 0, 'Alpha Pirate', 0, 'None', 0, 1, 0, 0, 1, 1, '10,11,12');
+INSERT INTO `wqw_equipment` VALUES (57, 57, 'Palkia', 'None', 0, 10, 100, 0, 'ar', 'Class', 50000, 0, 1, 'iiclass', 0, 50, 'Palkia.swf', 1, 'Pokemons are win! Made by Weakjounin', 0, 'Palkia', 0, 'None', 0, 1, 0, 0, 5, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (58, 58, 'Dialga', 'None', 0, 10, 100, 1, 'ar', 'Class', 50000, 0, 50, 'iiclass', 0, 50, 'Dialga.swf', 1, 'Cause Maximum wants it :D Made by Weakjounin', 0, 'Dialga', 0, 'None', 0, 1, 0, 0, 7, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (59, 59, 'Groudon', 'None', 0, 10, 100, 1, 'ar', 'Class', 50000, 0, 1, 'iiclass', 0, 1, 'Groudon.swf', 1, 'EARTHQUAKE TIME!!!!!! Designed by Weakjounin!', 0, 'Groudon', 0, 'None', 0, 1, 0, 0, 10, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (61, 1500, 'Warrior2', 'None', 0, 10, 100, 0, 'co', 'Armor', 15000, 0, 1, 'iwarmor', 0, 1, 'warrior2_skin.swf', 0, 'Yeah, you got the test item.', 0, 'Berserker', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (63, 63, '', 'None', 0, 10, 100, 0, 'Weapon', 'Enhancement', 150000, 1, 100, 'iwd1', 1, 50, '', 1, '', 0, 'Master Enchancement', 0, 'None', 0, 1, 0, 0, 0, 100, NULL);
+INSERT INTO `wqw_equipment` VALUES (64, 64, 'Fox', 'None', 0, 10, 100, 0, 'co', 'Armor', 150000, 0, 1, 'iwarmor', 0, 1, 'AgentFox.swf', 1, 'FUCK! POKEPOLICE! GET THE HELL OUT OF HERE!', 0, 'PokePolice', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (65, 65, 'Fox', 'None', 0, 10, 100, 0, 'co', 'Armor', 150000, 0, 1, 'iwarmor', 0, 1, 'AgentFoxMulder.swf', 1, 'Upgraded PokePolice!', 0, 'Poke FBI', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (66, 66, 'arachnomancer', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'arachnomancer_skin.swf', 1, 'Master of the spider pokemons!', 0, 'Arachnomancer', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (67, 67, 'Asgir', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'asgir_skin.swf', 1, 'Assssssssssssssssssgir', 0, 'Asgir', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (68, 68, 'Astronaut', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'astronaut_skin.swf', 1, 'Space Pokemon Trainer Suite', 0, 'Astronaut', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (69, 69, 'Balance', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'Balance.swf', 1, 'Balance set? WHAT THE FUCK? THAT ISNT A POKEMON THING!', 0, 'Balance Armor', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (70, 70, 'Baron', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'baron_skin.swf', 1, 'GOTTA KILL EM ALL!', 0, 'Baron', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (71, 71, 'BlackKnight', 'None', 0, 10, 100, 0, 'co', 'Armor', 200000, 0, 1, 'iwarmor', 0, 1, 'BlackKnight_skin.swf', 1, 'Made by Weakjounin!', 0, 'Black Knight', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (72, 72, 'BloodEagle', 'None', 0, 10, 100, 0, 'co', 'Armor', 200000, 0, 1, 'iwarmor', 0, 1, 'BloodEagle_skin.swf', 1, 'Made by Weakjounin!', 0, 'Blood Eagle', 0, 'None', 0, 1, 0, 0, 0, 1, '144');
+INSERT INTO `wqw_equipment` VALUES (73, 73, 'BloodPaladin', 'None', 0, 10, 100, 0, 'co', 'Armor', 200000, 0, 1, 'iwarmor', 0, 1, 'BloodPaladin_skin.swf', 1, 'Mady by Weakjounin!', 0, 'Blood Paladin', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (74, 74, 'Bunnyberzerk1', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'bunnyberzerk1_skin.swf', 1, 'Bunny Pokemon Trainers that like berserking will LOVE this!', 0, 'Bunny Berzerker', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (75, 75, 'chaossymbiote', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'chaossymbiote.swf', 1, 'Something random comes from a other planet, its nothing with pokemon, so its boring!', 0, 'Chaos Symbiote', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (76, 76, 'Crystal', 'None', 0, 10, 100, 0, 'co', 'Armor', 200000, 0, 1, 'iwarmor', 0, 1, 'Crystal.swf', 1, 'Made by Weakjounin', 0, 'Crystal', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (77, 77, 'CyeroGuest', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'CyeroGuest.swf', 1, 'Butler, makes food for Pokemons', 0, 'Poke Butler', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (78, 78, 'Cysero', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'cysero_skin.swf', 1, 'Cysero, once a staff member of AE, now a slave cause he tried to play with the big boys!', 0, 'Cysero', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (79, 79, 'Demon2', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'Demon2.swf', 1, 'CURSED!', 0, 'Evil Symbiote', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (80, 80, 'Demon3', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'demon3_skin.swf', 1, 'The REAL DEMON!', 0, 'Demon', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (81, 81, 'Terror', 'None', 0, 10, 100, 0, 'co', 'Armor', 200000, 0, 1, 'iwarmor', 0, 1, 'Despair_TerrorArmor.swf', 1, 'By Despair', 0, 'Terror Armor', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (82, 82, 'Valkira', 'None', 0, 10, 100, 0, 'co', 'Armor', 200000, 0, 1, 'iwarmor', 0, 1, 'Despair_Valkira_Armor.swf', 1, 'By Despair', 0, 'Valkira', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (83, 83, 'Dino', 'None', 0, 10, 100, 0, 'co', 'Armor', 200000, 0, 1, 'iwarmor', 0, 1, 'Dino.swf', 1, 'Made by Weakjounin!', 0, 'Dinosaur', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (84, 84, 'DP', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'DP.swf', 1, 'WTF IS THIS?!', 0, 'Srs Plate', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (85, 85, 'Drac1', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'draconian1_skin.swf', 1, 'Dragon Pokemon Trainer Suite', 0, 'Draconian', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (86, 86, 'Dracula', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'dracula_skin.swf', 1, 'VAMPIRES!!!', 0, 'Dracula', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (87, 87, 'Dragonlord', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'dragonlord_skin.swf', 1, 'Old School Dragonlords, Masters of Dragon Pokemons!', 0, 'Dragonlord', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (88, 88, 'Dragonlord2', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'dragonlord2_skin.swf', 1, 'Upgraded DragonLords, SUPERIOR MASTERS OF DRAGONLORDS!', 0, 'Upgraded Dragonlord', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (89, 89, 'Drow1', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'Drow1_skin.swf', 1, 'A Drow', 0, 'Drow Armor', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (90, 90, 'Druid1', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'druid1_skin.swf', 1, 'A Druid, they like Bug and Grass Pokemon!', 0, 'Druid Armor', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (91, 91, 'Dwarf2', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'Dwarf2_skin.swf', 1, 'You feel like a machine!', 0, 'Dwarf Armor', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (92, 92, 'Electric', 'None', 0, 10, 100, 0, 'co', 'Armor', 200000, 0, 1, 'iwarmor', 0, 1, 'Electric.swf', 1, 'Mady by Weakjounin!', 0, 'Electric', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (93, 93, 'Escherion', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'Escherion.swf', 1, 'Nice armor for Ghost trainers!', 0, 'Escherion', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (94, 94, 'EvilGear', 'None', 0, 10, 100, 0, 'co', 'Armor', 200000, 0, 1, 'iwarmor', 0, 1, 'EvilGear.swf', 1, 'Made by Weakjounin!', 0, 'Evil Gear', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (95, 95, 'FantasyBard', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'FantasyBard_skin.swf', 1, 'Poke Bards? FTW!', 0, 'Poke Bard', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (96, 96, 'Balance', 'None', 0, 10, 100, 0, 'co', 'Armor', 200000, 0, 1, 'iwarmor', 0, 1, 'Finality_Balance.swf', 1, 'Made by Winsrar and Finality''s End', 0, 'Finality Balance Armor', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (97, 97, 'MiltonPool1', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'Franky.swf', 1, 'HAR HAR HAR, YOU ARE THE MASTER OF SHADOW POKEMONS!', 0, 'Master Of Shadow', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (98, 98, 'Freddy1', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'Freddy1_skin.swf', 1, 'From TMNT!', 0, 'Shredda', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (99, 99, 'GarthMaul', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'garthmaul.swf', 1, 'HAR HAR, YOU LAST YOUR FACE!', 0, 'Garth Maul', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (101, 101, 'Ghost', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'ghost_skin.swf', 1, 'WAIT?! THIS is a GHOST?! WTF?!', 0, 'Ghost', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (102, 102, 'Grand1', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'Grand1_skin.swf', 1, 'We all hate you!', 0, 'The Grand One', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (103, 103, 'Groom', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'groom_skin.swf', 1, 'YOU ARE GROOMISH!', 0, 'Groom', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (104, 104, 'Guardian', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'guardian_skin.swf', 1, 'Protectors of the Legends of Pokemon!', 0, 'Guardians', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (105, 105, 'Hashashin1', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'Hashashin1_skin.swf', 1, 'Cause i want it!', 0, 'Hashashin', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (106, 106, 'Founder', 'None', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 0, 1, 'FounderArmorFinal.swf', 1, 'Mady By Weakjounin! FUCK YEAH!', 0, 'Founder Armor', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (107, 107, 'Weakjounin', 'None', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 0, 1, 'Weakjounin.swf', 1, 'Weakjounins Personal Armor, Mady by... HIMSELF LOL!', 0, 'Weakjounin', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (108, 108, 'FounderBladeFinal', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 0, 0, 1, 'iwsword', 0, 1, 'items/swords/FounderBladeFinal.swf', 1, 'FUCK YEAH! Mady by Weakjounin', 0, 'Founder Blade', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (109, 109, '', 'None', 0, 10, 100, 0, 'None', 'Item', 0, 0, 1, 'iibag', 0, 1, '', 1, 'to access staff shop number 7', 0, 'Staff Shop Token', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (110, 110, 'WeakBladeNew', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 0, 0, 1, 'iwsword', 0, 1, 'items/swords/WeakBladeNew.swf', 1, 'FUCK YEAH! Weakjounins personal blade! Made by himself!!!', 0, 'Weaks Blade', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (111, 111, 'FounderHelm6', 'None', 0, 10, 100, 0, 'he', 'Helm', 0, 0, 1, 'iihelm', 0, 1, 'items/helms/FounderHelm6.swf', 1, 'Made by Weakjounin!', 0, 'Founder Helm', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (112, 112, '', 'None', 0, 5, 5, 0, 'None', 'Item', 0, 5, 1, 'iibag', 5, 5, '', 127, 'Listen to me...', 0, 'Keep Killin'' Medal', 0, 'None', 5, 5, 5, 5, 5, 5, '11');
+INSERT INTO `wqw_equipment` VALUES (113, 113, '', 'None', 0, 10, 10, 0, 'None', 'Item', 0, 10, 1, 'iibag', 1, 10, '', 10, 'Fuck Yeah! Exchange this for RARE ITEMS at the end of the Event!', 0, 'Keep Killin'' Badge', 0, 'None', 10, 10, 10, 10, 10, 10, NULL);
+INSERT INTO `wqw_equipment` VALUES (114, 114, '', 'None', 0, 10, 100, 0, 'None', 'Item', 1000000, 0, 1, 'iibag', 0, 1, '', 1, 'Hidden Ticket', 0, 'Hidden Ticket', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (115, 115, 'timepunk', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 1, 'iwarmor', 0, 1, 'timepunk.swf', 1, 'To celebrate that we are 24/7, ONLY AVAIBLE ON THE FIRST TWO DAYS! Made by Weakjounin!', 0, 'Time Punk', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (116, 116, 'chainsawblade', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 100000, 0, 15, 'iwsword', 0, 1, 'items/swords/chainsawblade.swf', 1, 'By Weakjounin', 0, 'Chain Saw Blade', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (117, 117, 'Epic Energy Sword', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 100000, 0, 15, 'iwsword', 0, 1, 'items/swords/Epic Energy Sword.swf', 1, 'By Weakjounin!', 0, 'Energy Sword', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (118, 118, 'timepunk2', 'None', 0, 10, 100, 0, 'co', 'Armor', 100000, 0, 15, 'iwarmor', 0, 1, 'timepunk2.swf', 1, 'By Weakjounin! UPGRADED VERSION!', 0, 'Upgraded Time Punk', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (119, 119, 'BalanceWeapon', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 100000, 0, 10, 'iwsword', 0, 1, 'items/swords/BalanceWeapon.swf', 1, 'Balance Sword, but now TWICE!', 0, 'Balance Sword', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (120, 120, 'beamswordblack', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 100000, 0, 10, 'iwsword', 0, 1, 'items/swords/beamswordblack.swf', 1, 'Black? Mble!', 0, 'Black Beam Sword', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (121, 121, 'beamswordblue', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 100000, 0, 10, 'iwsword', 0, 1, 'items/swords/beamswordblue.swf', 1, 'Blue? Mble!', 0, 'Blue Beam Sword', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (122, 122, 'beamswordgreen', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 100000, 0, 10, 'iwsword', 0, 1, 'items/swords/beamswordgreen.swf', 1, 'Green? Mble!', 0, 'Green Beam Sword', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (123, 123, 'dancersword', 'None', 0, 10, 1000, 0, 'Weapon', 'Dagger', 100000, 0, 10, 'iwsword', 0, 1, 'items/swords/dancersword.swf', 1, 'aaaa', 0, 'Dancer Sword', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (124, 124, 'beamswordyellow', 'None', 0, 10, 32767, 0, 'Weapon', 'Dagger', 100000, 0, 10, 'iwsword', 0, 1, 'items/swords/beamswordyellow.swf', 1, 'Yellow? Mble!', 0, 'Yellow Beam Sword', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (125, 125, 'af', 'None', 0, 10, 100, 0, 'pe', 'Pet', 100000, 0, 1, 'iipet', 0, 1, 'items/pets/af.swf', 1, 'FACEABLE! Special for Inuyasha/Rokurai!', 0, 'Awesome Face', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (126, 126, 'Elitespear1easter', 'None', 0, 10, 150, 0, 'Weapon', 'Dagger', 10000, 50, 15, 'iwsword', 0, 1, 'items/polearms/Elitespear1easter.swf', 1, 'Berskerer bunny sword', 0, 'Easter Spear', 0, 'None', 0, 1, 0, 1, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (127, 127, 'inu', 'None', 0, 10, 100, 0, 'co', 'Armor', 50000, 0, 10, 'iwarmor', 0, 1, 'Dark Iron.swf', 1, 'Only Rokurai and Weakjounin may buy this, all others will have it removed and be warned or banned. Made be Weakjounin.', 0, 'Dark Iron', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (128, 128, 'fine', 'None', 0, 10, 6000, 0, 'Weapon', 'Dagger', 0, 0, 1, 'iwsword', 0, 1, 'items/swords/fine.swf', 1, 'Made by Weakjounin and Rokurai, Rokurai''s Personal', 0, 'BloodSword', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (701, 50, '', 'None', 0, 0, 100, 0, 'None', 'Item', 0, 0, 1, 'iibag', 2, 0, '', 10, 'Zhoom needs this map to find his way home!', 0, 'Secret Map', 0, 'None', 0, 1, 0, 0, 0, -1, '8,388');
+INSERT INTO `wqw_equipment` VALUES (885, 3077, '', 'None', 0, 10, 100, 0, 'Weapon', 'Enhancement', 1000, 1, 10, 'iwd1', 1, 50, ' ', 1, '', 0, 'Lucky Weapon Enhancement', 0, 'None', 0, 1, 0, 0, 0, 9, NULL);
+INSERT INTO `wqw_equipment` VALUES (886, 886, '500', 'None', 0, 10, 100, 0, 'am', 'Necklace', 12000, 35, 15, 'iin1', 0, 50, '', 1, 'Equip this Amulet to gain an additional 500 Health while in Player vs Player (PvP) battlegrounds.', 0, 'Copper PvP Amulet + 500', 0, 'None', 0, 1, 0, 0, 0, -1, NULL);
+INSERT INTO `wqw_equipment` VALUES (999, 999, 'MiltonPool4', 'None', 0, 10, 100, 0, 'co', 'Armor', 1000000, 100, 1, 'iwarmor', 0, 1, 'MiltonPool4_skin.swf', 1, 'OMFG ur a Milt bitch XD', 0, 'Fiend of Miltonius', 0, 'None', 0, 1, 0, 1, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (1000, 1000, '', 'None', 0, 10, 100, 1, 'Weapon', 'Dagger', 10000, 100, 1, 'iwdagger', 1, 1, 'items/swords/sword12.swf', 1, 'If you ask for a dual Blade of Awe, YOU FUCKING GET IT!', 0, 'Blade of Awe', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (1001, 1001, '', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 10000, 100, 1, 'iwdagger', 1, 1, 'items/guns/shotgunj6.swf', 1, 'Would anyone like a double barrel?', 0, 'J6''s Shotgun', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (1003, 1003, 'J6helm', 'None', 0, 10, 100, 0, 'he', 'Helm', 100, 0, 1, 'iihelm', 1, 1, 'items/helms/J6.swf', 1, '', 0, 'J6''s Helm', 0, 'None', 0, 1, 0, 0, 0, 9, NULL);
+INSERT INTO `wqw_equipment` VALUES (1004, 1004, '', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 100, 1, 1, 'iwdagger', 1, 1, 'items/swords/sword23.swf', 1, '', 0, 'StarSword(Dual)', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (1111, 1111, 'Skullhead3', 'None', 0, 10, 100, 0, 'he', 'Helm', 10000, 0, 1, 'iihelm', 1, 50, 'items/helms/skullhead3.swf', 1, 'Deathknight4878 has torn the flesh off of your very head to turn you undead. Ouch!', 0, 'Skeleton Head', 0, 'None', 0, 1, 0, 0, 0, 0, NULL);
+INSERT INTO `wqw_equipment` VALUES (2222, 2222, 'Barbarianaxe02', 'None', 0, 10, 100, 1, 'Weapon', 'Dagger', 100, 0, 1, 'iwsword', 0, 50, 'items/axes/Barbarianaxe02.swf', 1, 'The axe of shadows is deep and dark. Deathknight4878 starts to make you become engulfed in evil...', 0, 'Shadow Axe', 0, 'None', 0, 1, 0, 0, 0, 0, NULL);
+INSERT INTO `wqw_equipment` VALUES (2223, 2223, 'knight2', 'None', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 100, 'iwarmor', 0, 50, 'knight2_skin.swf', 1, 'Deathknight4878''s personal.', 0, 'Deathknight4878', 0, 'None', 0, 1, 0, 0, 0, 0, NULL);
+INSERT INTO `wqw_equipment` VALUES (2224, 2224, 'Demonkissblade1', 'None', 0, 10, 1000, 0, 'Weapon', 'Dagger', 0, 0, 100, 'iwsword', 0, 50, 'items/swords/Demonkissblade1.swf', 1, 'Deathknight4878''s personal.', 0, 'Deathknight4878 Blade', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (2225, 2225, 'J6', 'None', 0, 10, 100, 0, 'co', 'Armor', 15000, 0, 1, 'iwarmor', 1, 50, 'J6_skin.swf', 1, 'Added because of Slash.', 0, 'J6', 0, 'None', 0, 1, 0, 0, 0, 0, NULL);
+INSERT INTO `wqw_equipment` VALUES (2310, 2310, 'Warrior2a', 'None', 0, 10, 100, 0, 'ar', 'Class', 100000, 1, 1, 'iiclass', 0, 1, 'warrior2a_skin.swf', 0, 'Ahh, the old times...', 0, 'Beta Berserker', 0, 'None', 0, 1, 0, 0, 9, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (3878, 3878, 'Undead3', 'None', 0, 10, 100, 0, 'co', 'Armor', 15000, 0, 1, 'iwarmor', 0, 50, 'undead3_skin.swf', 1, 'In life, you were mad with strength and rage... deathknight4878 raises you from the dead to rise and kill once again!', 0, 'Undead Bersker', 0, 'None', 0, 1, 0, 0, 0, 0, NULL);
+INSERT INTO `wqw_equipment` VALUES (4000, 4000, 'Hook1', 'None', 0, 10, 100, 1, 'co', 'Armor', 300, 0, 1, 'iwarmor', 1, 50, 'Hook_skin.swf', 1, 'Naval Commander', 0, 'Royal Naval Commander', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4004, 4004, 'Davy1', '', 0, 10, 100, 1, 'co', 'Armor', 200, 0, 1, 'iwarmor', 1, 0, 'Davy_skin.swf', 1, '', 0, 'Rotting Naval Commander', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4005, 4005, 'Pirate3', '', 0, 10, 100, 1, 'co', 'Armor', 200, 0, 1, 'iwarmor', 1, 0, 'Pirate3_skin.swf', 1, '', 0, 'Pirate Captain', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4007, 4007, '', '', 0, 10, 100, 0, 'Weapon', 'Sword', 100, 0, 5, 'iwsword', 1, 0, 'items/swords/starsword1.swf', 1, '', 0, 'Red Star Sword', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4008, 4008, '', '', 0, 10, 100, 0, 'Weapon', 'Sword', 100, 0, 5, 'iwsword', 1, 0, 'Items/swords/sword23.swf', 1, '', 0, 'Star Sword', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4009, 4009, '', '', 0, 10, 100, 0, 'Weapon', 'Sword', 100, 0, 3, 'iwsword', 1, 0, 'items/swords/sword20.swf', 1, '', 0, 'Balrog Blade', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4010, 4010, '', '', 0, 10, 100, 0, 'Weapon', 'Sword', 200, 0, 1, 'iwsword', 1, 0, 'items/swords/sword25.swf', 1, '', 0, 'Cutlass', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4011, 4011, '', '', 0, 10, 100, 0, 'Weapon', 'Dagger', 100, 0, 1, 'iwdagger', 1, 0, 'items/daggers/dagger05.swf', 1, '', 0, 'Crude Twin Dagger', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4012, 4012, '', '', 0, 10, 100, 0, 'Weapon', 'Sword', 100, 0, 3, 'iwsword', 1, 0, 'items/swords/sword27.swf', 1, '', 0, 'Shinobi Katana', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4017, 4017, 'Cake', '', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'Cake_skin.swf', 1, '', 0, 'Cake Armor', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4018, 4018, 'Warlord1', '', 0, 10, 100, 0, 'o', 'Armor', 100, 0, 1, 'iwarmor', 1, 0, 'War1armor1_skin.swf', 1, '', 0, 'Savage Warlord Armor', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4019, 4019, 'Mummy', '', 0, 10, 100, 0, 'co', 'Armor', 4000, 0, 1, 'iwarmor', 1, 0, 'Mummy_skin.swf', 1, '', 0, 'Mummy Suit', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4025, 4025, 'Dwarfred3_skin', '', 0, 10, 100, 1, 'co', 'Armor', 100, 0, 1, 'iwarmor', 1, 0, 'Dwarfred3_skin.swf', 1, '', 0, 'Red Dwarf Warrior Armor', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4030, 4030, 'watcher', '', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'watcher_skin.swf', 1, '', 0, 'Watcher', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4032, 4032, 'Freddy1', '', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'Freddy1_skin.swf', 1, '', 0, 'Dream Slayer', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4033, 4033, 'Football1', '', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'football1_skin.swf', 1, '', 0, 'Grid Iron Death Team', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4034, 4034, 'Football2', '', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'football2_skin.swf', 1, '', 0, 'Blood Hawk Team', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4046, 4046, 'Artix1', '', 0, 10, 100, 1, 'co', 'Armor', 200, 0, 1, 'iwarmor', 1, 0, 'Artixchainsaw_skin.swf', 1, '', 0, 'Ebil Dread Paladin', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4052, 4052, 'Bana', '', 0, 10, 100, 0, 'co', 'Armor', 1000, 0, 1, 'iwarmor', 1, 0, 'banana_skin.swf', 1, '', 0, 'Banana Suit', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4068, 4068, 'Spartan1', '', 0, 10, 100, 1, 'co', 'Armor', 50, 0, 1, 'iwarmor', 1, 0, 'spartan1_skin.swf', 1, '', 0, 'Spartan Warrior', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4599, 4599, 'Swim1', '', 0, 10, 100, 0, 'co', 'Armor', 100, 0, 1, 'iwarmor', 1, 0, 'swim1_skin.swf', 1, '', 0, 'Battle Swimwear', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4605, 4605, 'Warrior9', '', 0, 10, 100, 0, 'co', 'Armor', 1000, 0, 1, 'iwarmor', 1, 0, 'warrior9_skin.swf', 1, 'The phoenix that flies over our heads enchanted a newer armer out of the old one.', 0, 'Phoenix Plate', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4620, 4620, 'JD23', '', 0, 10, 100, 0, 'co', 'Armor', 15000, 0, 1, 'iwarmor', 1, 0, 'ChaosLord.swf', 1, 'You can feel the chaos dwelling up inside you getting stronger everyday.', 0, 'Drakath Armor', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4621, 4621, 'Cenobite1', 'None', 0, 10, 100, 0, 'co', 'Armor', 25000, 1, 1, 'iwarmor', 1, 0, 'Cenobite1_skin.swf', 1, 'Thanks to PDL i got this lol :P hehe im such a sneak', 0, 'Dark zenobyte', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4627, 4627, 'Ghost', '', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'Ghost_skin.swf', 1, '', 0, 'Evolved Ghost Overlord', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4629, 4629, 'Mafia', '', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'Mafia_skin.swf', 1, '', 0, 'Mafia DrugLord', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4630, 4630, 'War10', '', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'warrior11_skin.swf', 1, '', 0, 'Evolved Berserker Champion', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4631, 4631, 'Maul', '', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'Darth_Maul_Armor.swf', 1, '', 0, 'Darth Maul', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4632, 4632, 'Irismancer', '', 0, 10, 100, 0, 'co', 'Armor', 1000, 0, 1, 'iwarmor', 1, 0, 'Irismancer_skin.swf', 1, '', 0, 'Irismancer Armor', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4634, 4634, 'Ichigo', '', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'Ichigo Bankai.swf', 1, '', 0, 'Ichigo Bankai', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4635, 4635, 'Max', 'None', 0, 10, 100, 0, 'co', 'Armor', 0, 0, 1, 'iwarmor', 1, 0, 'Max_skin.swf', 1, 'Cause Time wanted to speed things up abit.', 0, 'Kreath', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4637, 4637, '800', 'None', 0, 10, 100, 0, 'am', 'Necklace', 50000, 35, 5, 'iin1', 0, 50, '', 1, 'Equip this Amulet to gain an additional 800 Health while in Player vs Player (PvP) battlegrounds.', 1, 'Copper PvP Amulet + 800', 0, 'None', 0, 1, 0, 0, 0, -1, '');
+INSERT INTO `wqw_equipment` VALUES (4638, 4638, '', 'None', 0, 5, 5, 0, 'None', 'Item', 0, 5, 1, 'iibag', 5, 5, '', 127, 'This can be turned in at anytime during your character existence, this also might be able to be used later on to get something cool. So save em up.', 0, 'Troll Medal', 0, 'None', 5, 5, 5, 5, 5, 5, '11');
+INSERT INTO `wqw_equipment` VALUES (4639, 4639, 'DarkCaster', 'None', 0, 10, 100, 0, 'co', 'Armor', 1000, 30, 1, 'iwarmor', 1, 0, 'DarkCaster.swf', 1, '', 0, 'Dark Caster', 0, 'None', 0, 1, 0, 0, 0, 1, '');
+INSERT INTO `wqw_equipment` VALUES (4640, 4640, 'DarkCaster', 'None', 0, 10, 100, 0, 'co', 'Armor', 1000, 50, 1, 'iwarmor', 1, 50, 'DarkCaster.swf', 1, '', 0, 'Dark Caster', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4641, 4641, 'Tomixhead', 'None', 0, 10, 100, 0, 'he', 'Helm', 1000, 10, 1, 'iihelm', 1, 0, 'items/helms/Tomixhead.swf', 1, 'This was added for SL/Loreo/Gun/whatever name he comes up with next', 0, 'Tomix Head', 0, 'None', 0, 1, 0, 0, 0, 1, '');
+INSERT INTO `wqw_equipment` VALUES (4642, 4642, 'furyblade', 'None', 0, 10, 100, 0, 'Weapon', 'Dagger', 10000, 10, 1, 'iwsword', 1, 0, 'items/swords/furyblade.swf', 1, '', 0, 'Fury Blade', 0, 'None', 0, 1, 0, 0, 0, 1, '');
+INSERT INTO `wqw_equipment` VALUES (4643, 4643, '', 'None', 0, 10, 100, 0, 'Weapon', 'Enhancement', 1500, 1, 15, 'iwd1', 1, 50, ' ', 1, '', 0, 'Lucky Weapon Enhancement', 0, 'None', 0, 1, 0, 0, 0, 9, NULL);
+INSERT INTO `wqw_equipment` VALUES (4644, 4644, '', 'None', 0, 10, 100, 0, 'ba', 'Enhancement', 1260, 0, 20, 'iicape', 0, 0, '', 0, '', 0, 'Fighter Cape Enhancement', 0, 'None', 0, 1, 0, 0, 0, 0, NULL);
+INSERT INTO `wqw_equipment` VALUES (4645, 4645, '', 'None', 0, 10, 100, 0, 'Weapon', 'Mace', 3500, 1, 1, 'iwmace', 1, 50, 'items/maces/blank.swf', 1, 'If you don''t have a weapon, doesn''t that mean you have no life?', 0, 'Unarmed', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4646, 4646, 'IcyDavy1', 'None', 0, 10, 100, 0, 'co', 'Armor', 10000, 30, 1, 'iwarmor', 1, 1, 'IcyDavy_skin.swf', 1, 'This is only to be used if the pirate wearing this is from Africa.\r\n\r\nCaution: Whale blubber used, steam wash only.', 0, 'Icy Naval Commander', 0, 'None', 0, 1, 0, 0, 0, 1, '');
+INSERT INTO `wqw_equipment` VALUES (4647, 4647, 'PirateFlintlock', 'None', 0, 10, 100, 0, 'Weapon', 'Gun', 10000, 30, 1, 'iwgun', 1, 1, 'items/guns/PirateFlintlock.swf', 1, 'The most deadliest of guns, and unfortunately the biggest.', 0, 'Icy Naval Commander', 0, 'None', 0, 1, 0, 0, 0, 1, '');
+INSERT INTO `wqw_equipment` VALUES (4648, 4648, 'PirateFlintlock', 'None', 0, 10, 100, 0, 'Weapon', 'Gun', 1000, 1, 1, 'iwgun', 1, 1, 'items/guns/PirateFlintlock.swf', 1, 'For Pirate use only, if not...OFF THE PLANK!', 0, 'Pirate Flintlock Pistol', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4649, 4649, 'DungeonReaver', 'None', 0, 10, 100, 0, 'Weapon', 'Sword', 1000, 1, 1, 'iwsword', 1, 1, 'items/swords/DungeonReaver.swf', 1, 'OMG YOU FOUND IT?! FUCK!!!!!', 0, 'SkullWraith', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4650, 4650, 'CaptainHat2', 'None', 0, 10, 100, 0, 'he', 'Helm', 1000, 1, 1, 'iihelm', 1, 1, 'items/helms/CaptainHat2.swf', 1, 'Cold hat...WTF is the point of a cold hat?!', 0, 'Icy Pirate Captain Hat', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4651, 4651, 'UndeadParrot2', 'None', 0, 10, 100, 0, 'ba', 'Cape', 1000, 1, 1, 'iicape', 1, 1, 'items/capes/UndeadParrot2.swf', 1, 'Who ever heard of a cold undead parrot? meh I guess it makes sense', 0, 'Icy Undead Parrot', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4652, 4652, 'ChestofBooty', 'None', 0, 10, 100, 0, 'ba', 'Cape', 100, 1, 1, 'iicape', 1, 1, 'items/capes/ChestofBooty.swf', 1, 'I like big (Chest of)Booty and i cannot lie.', 0, 'Chest of Booty', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4653, 4653, 'Darkwitch', 'None', 0, 10, 100, 0, 'co', 'Armor', 10000, 1, 1, 'iwarmor', 1, 1, 'darkwitch_skin.swf', 1, 'For those who wanna look emo and gay at the same time :3', 0, 'Witch Armor', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4654, 4654, 'J6Pirate', 'None', 0, 10, 100, 0, 'co', 'Armor', 10000, 1, 1, 'iwarmor', 1, 1, 'J6Pirate.swf', 1, 'Once again, for pirates only', 0, 'J6 - Pirate', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4655, 4888, 'Nemesis', 'None', 0, 10, 100, 0, 'co', 'Armor', 5000, 0, 1, 'iwarmor', 0, 50, 'nemesis_skin.swf', 1, 'Deathknight4878 entrusts you with this elite armor. Use it wisely... for the power you may gain is unforgiving.', 0, 'Shadow Knight', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4656, 4878, 'Necro2', 'None', 0, 10, 100, 1, 'co', 'Armor', 800, 0, 1, 'iwarmor', 1, 50, 'necro2_skin.swf', 1, 'This is the necromancer armor deathknight4878 created. For darkness!', 0, 'Necromancer', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4657, 5003, 'Mage3', 'None', 0, 10, 100, 1, 'co', 'Armor', 1, 0, 1, 'iwarmor', 1, 50, 'Mage3_skin.swf', 1, 'Deathknight4878 imbues you with the power of the undead. You are now completely subdued to the power of darkness.', 0, 'Undead Lich', 0, 'None', 0, 1, 0, 0, 0, 0, '');
+INSERT INTO `wqw_equipment` VALUES (4658, 5004, 'moglindark', 'None', 0, 10, 100, 1, 'pe', 'Pet', 150, 0, 1, 'iipet', 0, 1, 'items/pets/moglindark.swf', 1, 'pet moglin dark', 0, 'Dark Mogin', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4659, 5005, 'moglinwhite', 'None', 0, 10, 100, 1, 'pe', 'Pet', 150, 0, 1, 'iipet', 0, 1, 'items/pets/moglinwhite.swf', 1, 'Pet White Moglin', 0, 'White Mogin', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4661, 5006, 'moglinred', 'None', 0, 10, 100, 1, 'pe', 'Pet', 150, 0, 1, 'iipet', 0, 1, 'items/pets/moglinred.swf', 1, 'Pet Red Moglin', 0, 'Red Moglin', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4662, 5007, 'hellhound1', 'None', 0, 10, 100, 1, 'pe', 'Pet', 200, 0, 1, 'iipet', 0, 1, 'items/pets/hellhound1.swf', 1, 'Pet Hound Hell', 0, 'Hound Hell', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4663, 5008, 'babydragonfounder', 'None', 0, 10, 100, 1, 'pe', 'Pet', 250, 0, 1, 'iipet', 0, 1, 'items/pets/babydragonfounder.swf', 1, 'Pet somente para Fundadores do Jogo', 0, 'Baby Dragon Funder', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4664, 5009, '4eavtb9qs', 'None', 0, 10, 100, 1, 'pe', 'Pet', 300, 0, 1, 'iipet', 0, 1, 'items/pets/4eavtb9qs_customdrag.swf', 1, 'Pet somente para GM''s', 0, 'Baby Dragon GM', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4665, 5010, 'Babydragonundead', 'None', 0, 10, 100, 1, 'pe', 'Pet', 150, 0, 1, 'iipet', 0, 1, 'items/pets/Babydragonundead.swf', 1, 'Pet baby Dragon Undead', 0, 'Baby Dragon Undead', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4666, 5011, 'babydragondark', 'None', 0, 10, 100, 1, 'pe', 'Pet', 200, 0, 1, 'iipet', 0, 1, 'items/pets/babydragondark.swf', 1, 'Pet baby Dragon Dark', 0, 'baby Dragon Dark', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4667, 5012, 'babydragonballoon', 'None', 0, 10, 100, 1, 'pe', 'Pet', 200, 0, 1, 'iipet', 0, 1, 'items/pets/babydragonballoon.swf', 1, 'Pet baby Dragon Balloon', 0, 'baby Dragon Balloon', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4668, 5013, 'PetTrobble1', 'None', 0, 10, 100, 1, 'pe', 'Pet', 100, 0, 1, 'iipet', 0, 1, 'items/pets/PetTrobble1.swf', 1, 'Pet Trobble', 0, 'Trobble', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4669, 5014, 'MiltonPoolSecretdagger03', 'None', 0, 10, 200, 0, 'Weapon', 'Dagger', 30000, 0, 1, 'iwdagger', 0, 1, 'items/daggers/MiltonPoolSecretdagger03.swf', 1, 'Naum sei o que fala!!!!!!!!!!!!!!', 1, 'Naum sei o Nome!', 0, 'None', 0, 1, 0, 0, 0, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4670, 15, 'Priest', 'None', 0, 10, 100, 0, 'ar', 'Class', 0, 0, 1, 'iiclass', 1, 50, 'priest_skin.swf', 1, '.', 0, 'Priest', 0, 'None', 0, 1, 0, 0, 15, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4671, 13, 'Mage', 'None', 0, 10, 100, 0, 'ar', 'Class', 0, 0, 1, 'iiclass', 1, 50, 'Mage_skin.swf', 1, 'Uma armadura bem escolhida entre muitos jogadores, por ser uma otima opicao para quem esta comecando, pois ataca de longe e tem bons danos', 0, 'Mage', 0, 'None', 0, 1, 0, 0, 13, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4672, 14, 'Rogue', 'None', 0, 10, 100, 0, 'ar', 'Class', 0, 0, 1, 'iiclass', 1, 50, 'rogue_skin.swf', 1, '.', 0, 'Rogue', 0, 'None', 0, 1, 0, 0, 14, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4673, 4673, 'Warrior', 'None', 0, 10, 100, 0, 'ar', 'Class', 1000, 0, 1, 'iiclass', 0, 0, 'warrior_skin.swf', 1, '', 0, 'Warrior Class', 0, 'None', 0, 1, 0, 0, 19, 1, NULL);
+INSERT INTO `wqw_equipment` VALUES (4674, 5015, 'MiltonPoolGood1', 'None', 0, 10, 2500, 1, 'ar', 'Class', 50000, 1, 1, 'iiclass', 1, 1, 'hypiron.swf', 0, 'armadura do Neo Rider', 0, 'Hypiron Class', 0, 'None', 0, 1, 0, 0, 17, 1, NULL);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_friends`
+-- 
+
+CREATE TABLE `wqw_friends` (
+  `id` int(11) NOT NULL auto_increment,
+  `userid` int(11) NOT NULL,
+  `friendid` varchar(128) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=23 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_friends`
+-- 
+
+INSERT INTO `wqw_friends` VALUES (1, 1, '2,3,4,5,6,7');
+INSERT INTO `wqw_friends` VALUES (2, 2, '1,3,4,5,6,7');
+INSERT INTO `wqw_friends` VALUES (3, 3, '2,1,4,5,6,7');
+INSERT INTO `wqw_friends` VALUES (4, 4, '2,3,1,5,6,7');
+INSERT INTO `wqw_friends` VALUES (5, 5, '2,3,4,1,6,7');
+INSERT INTO `wqw_friends` VALUES (6, 6, '2,3,4,5,1,7');
+INSERT INTO `wqw_friends` VALUES (7, 7, '1,2,3,4,5,6');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_guild`
+-- 
+
+CREATE TABLE `wqw_guild` (
+  `id` int(11) NOT NULL auto_increment,
+  `gid` int(11) NOT NULL,
+  `G_score` int(20) NOT NULL,
+  `G_name` varchar(50) NOT NULL,
+  `G_mark` varchar(50) NOT NULL,
+  `G_Master` varchar(32) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_guild`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_guildmember`
+-- 
+
+CREATE TABLE `wqw_guildmember` (
+  `id` int(11) NOT NULL auto_increment,
+  `gid` int(11) NOT NULL,
+  `G_name` varchar(50) NOT NULL,
+  `g_member` varchar(100) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_guildmember`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_hairs`
+-- 
+
+CREATE TABLE `wqw_hairs` (
+  `hairID` int(11) NOT NULL,
+  `id` int(11) NOT NULL auto_increment,
+  `sFile` varchar(60) NOT NULL,
+  `sName` varchar(32) NOT NULL,
+  `sGen` varchar(2) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=314 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_hairs`
+-- 
+
+INSERT INTO `wqw_hairs` VALUES (234, 0, 'hair/F/saf1.swf', 'Saf1', 'F');
+INSERT INTO `wqw_hairs` VALUES (29, 1, 'hair/F/Bangs2Long.swf', 'Bangs2Long', 'F');
+INSERT INTO `wqw_hairs` VALUES (247, 2, 'hair/M/Ziohair1.swf', 'Ziohair1', 'M');
+INSERT INTO `wqw_hairs` VALUES (64, 3, 'hair/M/Normal2.swf', 'Normal2', 'M');
+INSERT INTO `wqw_hairs` VALUES (245, 235, 'hair/M/Rennhair1.swf', 'Renhair1', 'M');
+INSERT INTO `wqw_hairs` VALUES (244, 236, 'hair/M/Braided1.swf', 'Braided1', 'M');
+INSERT INTO `wqw_hairs` VALUES (240, 237, 'hair/M/Long1.swf', 'Long1', 'M');
+INSERT INTO `wqw_hairs` VALUES (238, 238, 'hair/M/Wildbeard2.swf', 'Wildbeard2', 'M');
+INSERT INTO `wqw_hairs` VALUES (237, 239, 'hair/M/Wildbeard2.swf', 'Wildbeard1', 'M');
+INSERT INTO `wqw_hairs` VALUES (233, 240, 'hair/M/Widowspeak1.swf', 'Widowspeak1', 'M');
+INSERT INTO `wqw_hairs` VALUES (223, 241, 'hair/M/Beard3.swf', 'Beard3', 'M');
+INSERT INTO `wqw_hairs` VALUES (222, 242, 'hair/M/Beard2.swf', 'Beard2', 'M');
+INSERT INTO `wqw_hairs` VALUES (221, 243, 'hair/M/Beard2.swf', 'Beard1', 'M');
+INSERT INTO `wqw_hairs` VALUES (201, 244, 'hair/M/Ponytail9.swf', 'Ponytail9', 'M');
+INSERT INTO `wqw_hairs` VALUES (195, 245, 'hair/M/Miltonius.swf', 'Miltonius', 'M');
+INSERT INTO `wqw_hairs` VALUES (194, 246, 'hair/M/Glowingeyes2.swf', 'Glowingeyes2', 'M');
+INSERT INTO `wqw_hairs` VALUES (192, 247, 'hair/M/Glowingeyes1.swf', 'Glowingeyes1', 'M');
+INSERT INTO `wqw_hairs` VALUES (139, 248, 'hair/M/Mohawk4.swf', 'Mohawk4', 'M');
+INSERT INTO `wqw_hairs` VALUES (131, 249, 'hair/M/Fro2.swf', 'Fro2', 'M');
+INSERT INTO `wqw_hairs` VALUES (128, 250, 'hair/M/Fro1.swf', 'Fro1', 'M');
+INSERT INTO `wqw_hairs` VALUES (114, 251, 'hair/M/Halo1.swf', 'Halo1', 'M');
+INSERT INTO `wqw_hairs` VALUES (112, 252, 'hair/M/Feathered2.swf', 'Feathered2', 'M');
+INSERT INTO `wqw_hairs` VALUES (111, 253, 'hair/M/Feathered1.swf', 'Feathered1', 'M');
+INSERT INTO `wqw_hairs` VALUES (110, 254, 'hair/M/Slickback2.swf', 'Slickback2', 'M');
+INSERT INTO `wqw_hairs` VALUES (109, 255, 'hair/M/Ponytail.swf', 'Ponytail', 'M');
+INSERT INTO `wqw_hairs` VALUES (108, 256, 'hair/M/Conan3.swf', 'Conan3', 'M');
+INSERT INTO `wqw_hairs` VALUES (107, 257, 'hair/M/Conan2.swf', 'Conan2', 'M');
+INSERT INTO `wqw_hairs` VALUES (106, 258, 'hair/M/Ponytail3.swf', 'Ponytail3', 'M');
+INSERT INTO `wqw_hairs` VALUES (105, 259, 'hair/M/Conan1.swf', 'Conan1', 'M');
+INSERT INTO `wqw_hairs` VALUES (104, 260, 'hair/M/Mohawk3.swf', 'Mohawk3', 'M');
+INSERT INTO `wqw_hairs` VALUES (103, 261, 'hair/M/Mohawk2.swf', 'Mohawk2', 'M');
+INSERT INTO `wqw_hairs` VALUES (102, 262, 'hair/M/Mohawk1.swf', 'Mohawk1', 'M');
+INSERT INTO `wqw_hairs` VALUES (101, 263, 'hair/M/Slickback1.swf', 'Slickback1', 'M');
+INSERT INTO `wqw_hairs` VALUES (96, 264, 'hair/M/Ponytail4.swf', 'Ponytail4', 'M');
+INSERT INTO `wqw_hairs` VALUES (95, 265, 'hair/M/Ponytail5.swf', 'Ponytail5', 'M');
+INSERT INTO `wqw_hairs` VALUES (94, 266, 'hair/M/Ponytail6.swf', 'Ponytail6', 'M');
+INSERT INTO `wqw_hairs` VALUES (93, 267, 'hair/M/Ponytail7.swf', 'Ponytail7', 'M');
+INSERT INTO `wqw_hairs` VALUES (92, 268, 'hair/M/Ponytail8.swf', 'Ponytail8', 'M');
+INSERT INTO `wqw_hairs` VALUES (81, 269, 'hair/M/ZhoomStache.swf', 'ZhoomStache', 'M');
+INSERT INTO `wqw_hairs` VALUES (80, 270, 'hair/M/ZhoomBeard.swf', 'ZhoomBeard', 'M');
+INSERT INTO `wqw_hairs` VALUES (79, 271, 'hair/M/Zhoom.swf', 'Zhoom', 'M');
+INSERT INTO `wqw_hairs` VALUES (78, 272, 'hair/M/WavyStache.swf', 'WavyStache', 'M');
+INSERT INTO `wqw_hairs` VALUES (77, 273, 'hair/M/WavyBeard.swf', 'WavyBeard', 'M');
+INSERT INTO `wqw_hairs` VALUES (76, 274, 'hair/M/Wavy.swf', 'Wavy', 'M');
+INSERT INTO `wqw_hairs` VALUES (75, 275, 'hair/M/TonsureStache.swf', 'TonsureStache', 'M');
+INSERT INTO `wqw_hairs` VALUES (74, 276, 'hair/M/TonsureBeard.swf', 'TonsureBeard', 'M');
+INSERT INTO `wqw_hairs` VALUES (73, 277, 'hair/M/Tonsure.swf', 'Tonsure', 'M');
+INSERT INTO `wqw_hairs` VALUES (72, 278, 'hair/M/SpikedownStache.swf', 'SpikedownStache', 'M');
+INSERT INTO `wqw_hairs` VALUES (71, 279, 'hair/M/SpikedownBeard.swf', 'SpikedownBeard', 'M');
+INSERT INTO `wqw_hairs` VALUES (70, 280, 'hair/M/Spikedown.swf', 'Spikedown', 'M');
+INSERT INTO `wqw_hairs` VALUES (69, 281, 'hair/M/PompadourStache.swf', 'PompadourStache', 'M');
+INSERT INTO `wqw_hairs` VALUES (68, 282, 'hair/M/PompadourBeard.swf', 'PompadourBeard', 'M');
+INSERT INTO `wqw_hairs` VALUES (67, 283, 'hair/M/Pompadour.swf', 'Pompadour', 'M');
+INSERT INTO `wqw_hairs` VALUES (66, 284, 'hair/M/Normal2Stache.swf', 'Normal2Stache', 'M');
+INSERT INTO `wqw_hairs` VALUES (65, 285, 'hair/M/Normal2Beard.swf', 'Normal2Beard', 'M');
+INSERT INTO `wqw_hairs` VALUES (64, 286, 'hair/M/Normal2.swf', 'Normal2', 'M');
+INSERT INTO `wqw_hairs` VALUES (63, 287, 'hair/M/NormalStache.swf', 'NormalStache', 'M');
+INSERT INTO `wqw_hairs` VALUES (62, 288, 'hair/M/NormalBeard.swf', 'NormalBeard', 'M');
+INSERT INTO `wqw_hairs` VALUES (61, 289, 'hair/M/Normal.swf', 'Normal', 'M');
+INSERT INTO `wqw_hairs` VALUES (60, 290, 'hair/M/Goku2Stache.swf', 'Goku2Stache', 'M');
+INSERT INTO `wqw_hairs` VALUES (59, 291, 'hair/M/Goku2Beard.swf', 'Goku2Beard', 'M');
+INSERT INTO `wqw_hairs` VALUES (58, 292, 'hair/M/Goku2.swf', 'Goku2', 'M');
+INSERT INTO `wqw_hairs` VALUES (57, 293, 'hair/M/Goku1Stache.swf', 'Goku1Stache', 'M');
+INSERT INTO `wqw_hairs` VALUES (56, 294, 'hair/M/Goku1Beard.swf', 'Goku1Beard', 'M');
+INSERT INTO `wqw_hairs` VALUES (55, 295, 'hair/M/Goku1.swf', 'Goku1', 'M');
+INSERT INTO `wqw_hairs` VALUES (54, 296, 'hair/M/DefaultStache.swf', 'DefaultStache', 'M');
+INSERT INTO `wqw_hairs` VALUES (53, 297, 'hair/M/DefaultBeard.swf', 'DefaultBeard', 'M');
+INSERT INTO `wqw_hairs` VALUES (52, 298, 'hair/M/Default.swf', 'Default', 'M');
+INSERT INTO `wqw_hairs` VALUES (51, 299, 'hair/M/CurlStache.swf', 'CurlStache', 'M');
+INSERT INTO `wqw_hairs` VALUES (50, 300, 'hair/M/CurlBeard.swf', 'CurlBeard', 'M');
+INSERT INTO `wqw_hairs` VALUES (49, 301, 'hair/M/Curl.swf', 'Curl', 'M');
+INSERT INTO `wqw_hairs` VALUES (48, 302, 'hair/M/Braid1Stache.swf', 'Braid1Stache', 'M');
+INSERT INTO `wqw_hairs` VALUES (47, 303, 'hair/M/Braid1Beard.swf', 'Braid1Beard', 'M');
+INSERT INTO `wqw_hairs` VALUES (46, 304, 'hair/m/Braid1.swf', 'Braid1', 'M');
+INSERT INTO `wqw_hairs` VALUES (45, 305, 'hair/M/BobStache.swf', 'BobStache', 'M');
+INSERT INTO `wqw_hairs` VALUES (44, 306, 'hair/M/BobBeard.swf', 'BobBeard', 'M');
+INSERT INTO `wqw_hairs` VALUES (43, 307, 'hair/M/Bob.swf', 'Bob', 'M');
+INSERT INTO `wqw_hairs` VALUES (42, 308, 'hair/M/Bangs22Stache.swf', 'Bangs22Stache', 'M');
+INSERT INTO `wqw_hairs` VALUES (41, 309, 'hair/M/Bangs22Beard.swf', 'Bangs22Beard', 'M');
+INSERT INTO `wqw_hairs` VALUES (40, 310, 'hair/M/Bangs22.swf', 'Bangs22', 'M');
+INSERT INTO `wqw_hairs` VALUES (39, 311, 'hair/M/BaldStache.swf', 'BaldStache', 'M');
+INSERT INTO `wqw_hairs` VALUES (38, 312, 'hair/M/BaldBeard.swf', 'BaldBeard', 'M');
+INSERT INTO `wqw_hairs` VALUES (4, 313, 'hair/M/bald.swf', 'Bald', 'M');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_hairshop`
+-- 
+
+CREATE TABLE `wqw_hairshop` (
+  `id` int(11) NOT NULL auto_increment,
+  `hairs` text NOT NULL,
+  `hairsM` text NOT NULL,
+  `hairsF` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_hairshop`
+-- 
+
+INSERT INTO `wqw_hairshop` VALUES (1, '58,64,234', '4,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,80,81,92,93,94,95,96,101,102,103,104,105,106,107,108,109,110,111,112,114,128,131,139,192,194,195,201,221,222,223,233,237,238,240,244,245,64,247', '234,29');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_items`
+-- 
+
+CREATE TABLE `wqw_items` (
+  `id` int(11) NOT NULL auto_increment,
+  `iQty` int(3) NOT NULL default '1',
+  `itemid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `classXP` int(11) default NULL,
+  `className` varchar(32) default NULL,
+  `equipped` tinyint(1) NOT NULL default '0',
+  `sES` varchar(16) NOT NULL,
+  `bBank` tinyint(1) NOT NULL default '0',
+  `iLvl` int(3) default NULL,
+  `EnhID` int(3) default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=100 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_items`
+-- 
+
+INSERT INTO `wqw_items` VALUES (1, 1, 2310, 1, 302500, 'Beta Berserker', 0, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (2, 1, 123, 1, NULL, NULL, 1, 'Weapon', 0, 100, 100);
+INSERT INTO `wqw_items` VALUES (3, 1, 2310, 2, 302527, 'Beta Berserker', 1, 'ar', 0, 17, 1);
+INSERT INTO `wqw_items` VALUES (4, 1, 122, 2, NULL, NULL, 1, 'Weapon', 0, 10, 1);
+INSERT INTO `wqw_items` VALUES (5, 1, 16, 3, 323849, 'Alpha Pirate', 1, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (6, 1, 122, 3, NULL, NULL, 1, 'Weapon', 0, 10, 1);
+INSERT INTO `wqw_items` VALUES (7, 1, 2310, 4, 302500, 'Beta Berserker', 0, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (8, 1, 122, 4, NULL, NULL, 1, 'Weapon', 0, 10, 1);
+INSERT INTO `wqw_items` VALUES (9, 1, 2310, 5, 302500, 'Beta Berserker', 1, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (10, 1, 122, 5, NULL, NULL, 0, 'Weapon', 0, 10, 1);
+INSERT INTO `wqw_items` VALUES (11, 1, 2310, 6, 302500, 'Beta Berserker', 0, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (12, 1, 122, 6, NULL, NULL, 1, 'Weapon', 0, 10, 1);
+INSERT INTO `wqw_items` VALUES (13, 1, 54, 6, 302500, 'Soulweaver', 1, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (14, 1, 51, 4, 302500, 'Voltaire', 1, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (15, 1, 66, 5, NULL, NULL, 1, 'co', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (16, 1, 4009, 5, NULL, NULL, 0, 'Weapon', 0, 3, 0);
+INSERT INTO `wqw_items` VALUES (17, 1, 2222, 5, NULL, NULL, 1, 'Weapon', 0, 1, 0);
+INSERT INTO `wqw_items` VALUES (18, 1, 4630, 2, NULL, NULL, 0, 'co', 0, 1, 0);
+INSERT INTO `wqw_items` VALUES (19, 1, 1004, 2, NULL, NULL, 0, 'Weapon', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (20, 1, 66, 1, NULL, NULL, 0, 'co', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (21, 1, 4620, 1, NULL, NULL, 0, 'co', 0, 1, 0);
+INSERT INTO `wqw_items` VALUES (22, 1, 4637, 3, NULL, NULL, 1, 'am', 0, 5, -1);
+INSERT INTO `wqw_items` VALUES (23, 1, 4637, 1, NULL, NULL, 1, 'am', 0, 5, -1);
+INSERT INTO `wqw_items` VALUES (25, 1, 2310, 7, 302500, 'Beta Berserker', 1, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (26, 1, 5, 7, NULL, NULL, 0, 'Weapon', 0, 10, 1);
+INSERT INTO `wqw_items` VALUES (27, 1, 66, 7, NULL, NULL, 0, 'co', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (28, 1, 4646, 7, NULL, NULL, 1, 'co', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (29, 1, 4650, 7, NULL, NULL, 1, 'he', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (30, 1, 1004, 7, NULL, NULL, 1, 'Weapon', 0, 15, 9);
+INSERT INTO `wqw_items` VALUES (31, 1, 4030, 7, NULL, NULL, 0, 'co', 0, 1, 0);
+INSERT INTO `wqw_items` VALUES (32, 1, 127, 2, NULL, NULL, 1, 'co', 0, 10, 1);
+INSERT INTO `wqw_items` VALUES (33, 1, 4637, 2, NULL, NULL, 0, 'am', 0, 5, -1);
+INSERT INTO `wqw_items` VALUES (34, 35, 50, 1, NULL, NULL, 0, 'None', 0, 1, -1);
+INSERT INTO `wqw_items` VALUES (35, 5, 50, 2, NULL, NULL, 0, 'None', 0, 1, -1);
+INSERT INTO `wqw_items` VALUES (36, 1, 5004, 2, NULL, NULL, 1, 'pe', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (37, 1, 5004, 3, NULL, NULL, 1, 'pe', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (38, 1, 5004, 1, NULL, NULL, 0, 'pe', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (39, 1, 5005, 1, NULL, NULL, 0, 'pe', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (40, 1, 5008, 1, NULL, NULL, 0, 'pe', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (41, 1, 5007, 1, NULL, NULL, 0, 'pe', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (42, 1, 5013, 1, NULL, NULL, 0, 'pe', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (43, 1, 1002, 1, 302500, 'Evolved Thyton', 0, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (59, 1, 13, 1, 0, 'Mage', 0, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (61, 1, 5003, 1, NULL, NULL, 0, 'co', 0, 1, 0);
+INSERT INTO `wqw_items` VALUES (64, 1, 5015, 1, 303583, 'Hypiron Class', 0, 'ar', 0, 100, 1);
+INSERT INTO `wqw_items` VALUES (71, 1, 12, 1, 0, 'Warrior Class', 0, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (73, 1, 18, 1, 0, 'Warrior Class', 0, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (74, 1, 18, 1, 0, 'Warrior Class', 0, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (75, 1, 4673, 1, 0, 'Warrior Class', 1, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (76, 1, 15, 1, 0, 'Priest', 0, 'ar', 0, 1, 1);
+INSERT INTO `wqw_items` VALUES (77, 1, 14, 1, 0, 'Rogue', 0, 'ar', 0, 1, 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_maps`
+-- 
+
+CREATE TABLE `wqw_maps` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(32) NOT NULL,
+  `fileName` varchar(128) NOT NULL,
+  `monsternumb` varchar(128) default NULL,
+  `monsterid` varchar(128) default NULL,
+  `monsterframe` varchar(512) default NULL,
+  `sExtra` varchar(32) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10000 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_maps`
+-- 
+
+INSERT INTO `wqw_maps` VALUES (3, 'battleontown', 'battleon/town-battleontown-2aug10.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (4, 'battleon', 'battleon/town-battleon-17sep10.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (5, 'yulgar', 'battleon/town-yulgar-8July10.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (6, 'newbie', 'town-newbie.swf', '23', '23', 'Fight', '');
+INSERT INTO `wqw_maps` VALUES (7, 'boxes', 'town-boxes.swf', '25,25,25,25,202,202,25,25,203,201,25,25,25', '25,201,202,203', 'Fort1,Fort1,Secret,Secret,Fort2,Fort2,Closet,Closet,Fort2,Boss,Boss,Fort1,Enter,Enter', '');
+INSERT INTO `wqw_maps` VALUES (8, 'limbo', 'town-limbo.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (9, 'intro', 'town-intro.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (10, 'nexus', 'town-nexus.swf', '305,305', '305', 'Enter,Enter', '');
+INSERT INTO `wqw_maps` VALUES (11, 'ruins', 'town-ruins-28jan10.swf', '306,308,307,309', '306,307,308,309', 'Enter,Field1,Field1,Boss', '');
+INSERT INTO `wqw_maps` VALUES (12, 'invasion', 'town-invasion.swf', '770,770,23,23,770,771,770,770,771,23,23,771,23', '23,770,771', 'Enter,Enter,Enter,Enter,Enter,ForestLEFT,Enter,Enter,Enter,Enter,Extra1,Extra1,Extra1', '');
+INSERT INTO `wqw_maps` VALUES (13, 'portal', 'town-portal.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (16, 'dwakel', 'town-dwakel-13apr10r3.swf', '401,402,400,401,402,401,400,403', '400,401,402,403,25', 'Farm2,Farm2,Farm1,Farm1,Gap,Gap,Boss,Crash', '');
+INSERT INTO `wqw_maps` VALUES (17, 'newyear', 'town-newyear.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (18, 'luck', 'town-Luck-12Mar10_r1.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (19, 'tower', 'town-towerb-21may10.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (20, 'grenwog', 'town-grenwog.swf', '350', '350', 'Boss', '');
+INSERT INTO `wqw_maps` VALUES (23, 'forestchaos', '/town-ForestChaos-8Feb10.swf', '351,351,351,351,351,351,352,351', '351,352', 'Curve,Curve,Straight1,Straight1,Straight1,Straight2,Straight2,Boss', '');
+INSERT INTO `wqw_maps` VALUES (24, 'ballyhoo', 'town-ballyhoo.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (25, 'buyhouse', 'town-buyhouse-2Jul.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (26, 'cellar', 'town-cellar_r2.swf', '450,450,450,451,451,450,451,450,452', '450,451,452', 'Smoothery,Smoothery,Storage,Storage,Storage,Split,Split,Room,Room', '');
+INSERT INTO `wqw_maps` VALUES (27, 'greendragon', 'town-greendragon.swf', '453', '453', 'Boss', '');
+INSERT INTO `wqw_maps` VALUES (28, 'deathgazer', 'town-beholder.swf', '454', '454', 'Enter', '');
+INSERT INTO `wqw_maps` VALUES (29, 'trunk', 'town-trunk.swf', '455', '455', 'Enter', '');
+INSERT INTO `wqw_maps` VALUES (30, 'well', 'town-well.swf', '456', '456', 'Boss', '');
+INSERT INTO `wqw_maps` VALUES (31, 'Greenguardeast', 'town-greenguard-east-17feb10.swf', '451,451,457,451,457,451,451,457,457,451,451', '451,457', 'East2,East2,East3,East3,East3,East4,East5,East5,East6,East6,East7', '');
+INSERT INTO `wqw_maps` VALUES (32, 'trainers', 'town-trainers-13apr10.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (33, 'twilight', 'town-twilight-25Mar10.swf', '600,600,601,600,603,602,604,603,602,602,603,600', '600,601,602,603,604', 'Enter,Enter,r2,r2,r3,r3,r4,r4,r4,r5,r6,r6', '');
+INSERT INTO `wqw_maps` VALUES (34, 'tunnel', 'town-tunnel.swf', '602,605,602,603,603,606,603,606,606', '602,605,603,606', 'Enter,t2,t3,t3,t4,t4,t5,t5,t5', '');
+INSERT INTO `wqw_maps` VALUES (35, 'swordhaven', 'town-Swordhaven-Oct2.swf', '23,23,23,23,23,23', '23', 'Left,Left,ForestLEFT,ForestLEFT,ForestRIGHT,ForestRIGHT', '');
+INSERT INTO `wqw_maps` VALUES (36, 'sewer', 'town-sewer.swf', '450,450,450,460,460,460,461,460', '450,460,461', 'Sewer1,Sewer1,Sewer2,Sewer2,Sewer2,End,End,End', '');
+INSERT INTO `wqw_maps` VALUES (37, 'frost', 'fdfa99509_town-frostscythe.swf', '661,660,660', '660,661', 'Boss,Enter,Enter', '');
+INSERT INTO `wqw_maps` VALUES (38, 'river', 'town-river-27apr10.swf', '750,750,751,751,750,750,752', '750,751,752', 'Enter,Field1,Field1,Field2,Field2,Field2,End', '');
+INSERT INTO `wqw_maps` VALUES (39, 'shadowfall', 'town-shadowfall-13apr10.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (40, 'otto', 'town-otto.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (41, 'stalagbite', 'town-stalagbite-21apr10.swf', '753,753,753,753,753,753,754,755', '753,754,755', 'Enter,Enter,Enter,r1,r1,r1,r2,r2', '');
+INSERT INTO `wqw_maps` VALUES (42, 'J6', 'town-J6.swf', '756,756,756,756,756,757', '756,757', 'R1,R1,R2,R3,R3,R4', '');
+INSERT INTO `wqw_maps` VALUES (43, 'mythsong', 'town-mythsong-17june10.swf', '758,758,759,759,760', '758,759,760', 'Cross,Cross,Path,Path,Hill', '');
+INSERT INTO `wqw_maps` VALUES (44, 'Battleoff', 'town-battleoff.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (45, 'punt', 'town-Punt-5Feb10.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (46, 'shallow', 'town-shallow.swf', '750,750,750,761', '750,761', 'Enter,Field1,Field1,Field2', '');
+INSERT INTO `wqw_maps` VALUES (47, 'Death', 'town-death_r1.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (48, 'Castle', 'town-castle-27jan10.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (49, 'akiba', 'town-akiba.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (51, 'saloon', 'town-saloon.swf', '851,850,850,850,850', '850,851', 'R2,R2,R2,R2,R7', '');
+INSERT INTO `wqw_maps` VALUES (52, 'Palooza', 'live-Palooza.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (53, 'snowpath', 'town-snowpath-09.swf', '951,950,950', '950,951', 'Boss,Enter,Enter', '');
+INSERT INTO `wqw_maps` VALUES (54, 'kitsune', 'town-Kitsune.swf', '859,859,860', '859,860', 'Enter,Enter,Boss', '');
+INSERT INTO `wqw_maps` VALUES (55, 'backstage', 'backstage.swf', '776,775,776,775,776,776', '775,776', 'Enter,Enter,EquipRoom,EquipRoom,EquipRoom,EquipRoom', '');
+INSERT INTO `wqw_maps` VALUES (56, 'noobshire', 'town-noobshire-sep04.swf', '26,26,28,29,28,27,28,28,28,27,26', '26,27,28,29', 'West,West,East,East,East,West,North,North,North,Enter,Enter', '');
+INSERT INTO `wqw_maps` VALUES (57, 'birthday', 'town-Birthday.swf', '30', '30', 'Party', '');
+INSERT INTO `wqw_maps` VALUES (58, 'tavern', 'town-tavern_r4.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (59, 'pines', 'town-pines-28Jan10.swf', '31,32,33,32,34,32,31,34,31,33,32,34,31,31,35,33,34', '31,32,33,34,35', 'Enter,Enter,Llama,Llama,Mountain,Mountain,Path1,Path1,Path1,Greenguard,Greenguard,Tavern,Citadel,Citadel,Boss,Greenguard,Enter', '');
+INSERT INTO `wqw_maps` VALUES (61, 'tilt', 'battleon-tilt.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (62, 'spell', 'battleon-spell.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (64, 'candyshop', 'town-candyshop.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (65, 'arcangrove', 'arcangrove/town-arcangrove-17sep10.swf', NULL, NULL, NULL, NULL);
+INSERT INTO `wqw_maps` VALUES (112, 'darkoviapvp', 'pvp/Darkovia-Brawl_prepassV2.swf', '356,368,368,366,366,367', '356,366,367,368', 'vBoss,v1,v1,l1,l1,lBoss', 'bPvP');
+INSERT INTO `wqw_maps` VALUES (116, 'bludrutbrawl', 'pvp/bludrutbrawl_r1.swf', '308,310,310,310,312,312,312,312,313,313,313,313,311,311,311,309', '308,309,310,311,312,313', 'Captain0,Morale0C,Morale0B,Morale0A,Resource0B,Resource0B,Resource0A,Resource0A,Resource1A,Resource1A,Resource1B,Resource1B,Morale1A,Morale1B,Morale1C,Captain1', 'bPvP');
+INSERT INTO `wqw_maps` VALUES (118, 'trainers', 'town-trainers-13apr10.swf', '', '', '', '');
+INSERT INTO `wqw_maps` VALUES (998, 'dragonfire', 'town-dragonfire.swf', '304', '304', 'Princess1', '');
+INSERT INTO `wqw_maps` VALUES (9999, 'concert', 'town-battleonTown-Voltaire2.swf', '', '', '', '');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_monsters`
+-- 
+
+CREATE TABLE `wqw_monsters` (
+  `id` int(11) NOT NULL auto_increment,
+  `sRace` varchar(32) NOT NULL default 'None',
+  `MonID` int(11) NOT NULL,
+  `intMPMax` int(5) NOT NULL,
+  `intGold` int(5) NOT NULL,
+  `intLevel` int(3) NOT NULL,
+  `strDrops` varchar(128) NOT NULL,
+  `intExp` int(5) NOT NULL,
+  `iDPS` int(3) NOT NULL,
+  `intHPMax` int(5) NOT NULL,
+  `strElement` varchar(32) NOT NULL default 'None',
+  `intRSC` int(3) NOT NULL,
+  `strLinkage` varchar(32) NOT NULL,
+  `strMonFileName` varchar(128) NOT NULL,
+  `strMonName` varchar(64) NOT NULL,
+  `intRep` int(3) NOT NULL,
+  `react` varchar(60) NOT NULL default ' ',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=952 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_monsters`
+-- 
+
+INSERT INTO `wqw_monsters` VALUES (2, 'None', 25, 30, 530, 10, '0:0:1', 150, 1, 750, 'None', 0, 'Sneevil1', 'Sneevil1.swf', 'Sneevil', 50, '');
+INSERT INTO `wqw_monsters` VALUES (3, 'Orc', 165, 30, 33, 1, '0:0:1', 11, 1, 1500, 'None', 0, 'OrcWarrior1a', 'OrcWarrior1a.swf', 'Dogear', 0, '');
+INSERT INTO `wqw_monsters` VALUES (4, 'None', 23, 100, 350, 5, '50:1:1', 80, 1, 400, 'Water', 0, 'Slimegreen', 'Slimegreen.swf', 'Slime', 1, '');
+INSERT INTO `wqw_monsters` VALUES (26, 'None', 26, 100, 10000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 900, 'None', 1, 'Peasant1', 'Peasant1.swf', 'Kittarian Female', 100, '');
+INSERT INTO `wqw_monsters` VALUES (27, 'None', 27, 100, 10000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 900, 'None', 1, 'Peasant2', 'Peasant2.swf', 'Kittarian Male', 100, '');
+INSERT INTO `wqw_monsters` VALUES (28, 'Orc', 28, 100, 10000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 900, 'None', 1, 'OrcWarrior1', 'OrcWarrior1.swf', 'Horc Noob', 100, '');
+INSERT INTO `wqw_monsters` VALUES (29, 'Orc', 29, 100, 10000, 5, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 3000, 'None', 1, 'OrcBoss1', 'OrcBoss1.swf', 'Horc Trainer', 100, '');
+INSERT INTO `wqw_monsters` VALUES (30, 'None', 30, 100, 10000, 11, '810:1:.95', 1000, 100, 11111, 'None', 1, 'IcecreamFish', 'IcecreamFish.swf', 'Swetish Fish', 100, '');
+INSERT INTO `wqw_monsters` VALUES (31, 'None', 31, 100, 10000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 2000, 'None', 1, 'Leatherwing', 'Leatherwing.swf', 'Leatherwing', 100, '');
+INSERT INTO `wqw_monsters` VALUES (32, 'None', 32, 100, 10000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 2000, 'None', 1, 'Turtle', 'Turtle.swf', 'Red Shell Turtle', 100, '');
+INSERT INTO `wqw_monsters` VALUES (33, 'None', 33, 100, 10000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 2000, 'None', 1, 'Troll3', 'Troll3.swf', 'Pine Troll', 100, '');
+INSERT INTO `wqw_monsters` VALUES (34, 'None', 34, 100, 10000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 2000, 'None', 1, 'GrizzlyBear', 'GrizzlyBear.swf', 'Pine Grizzly', 100, '');
+INSERT INTO `wqw_monsters` VALUES (35, 'None', 35, 100, 10000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 3000, 'None', 1, 'ChaosBear', 'ChaosBear.swf', 'Twisted Tooth', 100, '');
+INSERT INTO `wqw_monsters` VALUES (60, 'None', 356, 100, 0, 10, '0:0:0', 0, 1, 7000, 'None', 0, 'VampKnight', 'VampKnight.swf', 'Vampire Knight', 0, '0,1');
+INSERT INTO `wqw_monsters` VALUES (61, 'None', 366, 100, 0, 10, '0:0:0', 0, 1, 2000, 'Fire', 0, 'WerewolfLycan1', 'WerewolfLycan1.swf', 'War Lycan', 0, '1,0');
+INSERT INTO `wqw_monsters` VALUES (62, 'None', 367, 100, 0, 10, '0:0:0', 0, 1, 7000, 'Fire', 0, 'WerewolfLycanBoss', 'WerewolfLycanBoss.swf', 'War Lycan Knight', 0, '1,0');
+INSERT INTO `wqw_monsters` VALUES (63, 'None', 368, 100, 0, 10, '0:0:0', 0, 1, 2000, 'Fire', 0, 'Ghoul1', 'Ghoul1.swf', 'Vampire Ghoul', 0, '0,1');
+INSERT INTO `wqw_monsters` VALUES (97, 'None', 308, 100, 0, 10, '0:0:0', 0, 1, 35000, 'None', 0, 'Knightblack', 'Knightblack.swf', 'Team A Captain', 2, '1,0');
+INSERT INTO `wqw_monsters` VALUES (98, 'None', 309, 100, 0, 10, '0:0:0', 0, 1, 35000, 'None', 0, 'Knightblack', 'Knightblack.swf', 'Team B Captain', 2, '0,1');
+INSERT INTO `wqw_monsters` VALUES (99, 'None', 310, 100, 0, 10, '0:0:0', 0, 1, 15000, 'None', 0, 'Ninja2', 'Ninja2.swf', 'Team A Brawler', 2, '1,0');
+INSERT INTO `wqw_monsters` VALUES (100, 'None', 311, 100, 0, 10, '0:0:0', 0, 1, 15000, 'None', 0, 'Ninja1', 'Ninja1.swf', 'Team B Brawler', 2, '0,1');
+INSERT INTO `wqw_monsters` VALUES (101, 'None', 312, 100, 0, 10, '0:0:0', 0, 1, 5000, 'None', 0, 'Siren', 'Siren.swf', 'Team A Restorer', 2, '1,0');
+INSERT INTO `wqw_monsters` VALUES (102, 'None', 313, 100, 0, 255, '0:0:0', 0, 1, 5000, 'None', 0, 'Siren', 'Siren.swf', 'Team B Restorer', 2, '0,1');
+INSERT INTO `wqw_monsters` VALUES (201, 'Sneevil', 201, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Sneevilvoltron1', 'Sneevilvoltron1.swf', 'Sneevilltron', 100, '');
+INSERT INTO `wqw_monsters` VALUES (202, 'Sneevil', 202, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Sneevilboss', 'Sneevilboss.swf', 'Box Guardian', 1, '');
+INSERT INTO `wqw_monsters` VALUES (203, 'Sneevil', 203, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Sneevilboss2', 'Sneevilboss2.swf', 'Grizzle Spit', 100, '');
+INSERT INTO `wqw_monsters` VALUES (304, 'Dragon', 304, 100, 1500, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Princessmonster1', 'Princessmonster1.swf', 'Princess', 100, '');
+INSERT INTO `wqw_monsters` VALUES (305, 'None', 305, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Frogzard1', 'frogzard1.swf', 'FrogZard', 100, '');
+INSERT INTO `wqw_monsters` VALUES (306, 'None', 306, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Witch1', 'witch1.swf', 'Dark Witch', 100, '');
+INSERT INTO `wqw_monsters` VALUES (307, 'Undead', 307, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'UndeadWar4', 'Undeadwar4.swf', 'Undead Berserker', 100, '');
+INSERT INTO `wqw_monsters` VALUES (308, 'Undead', 308, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'UndeadBoss3', 'UndeadBoss3.swf', 'SoulSeeker', 100, '');
+INSERT INTO `wqw_monsters` VALUES (309, 'Elemental', 309, 150, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'Dark', 1, 'Darkelemental', 'DarkElemental.swf', 'Dark Elemental', 100, '');
+INSERT INTO `wqw_monsters` VALUES (350, 'None', 350, 100, 2000, 5, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 5000, 100, 12000, 'None', 1, 'Grenwog', 'Grenwog.swf', 'Grenwog', 100, '');
+INSERT INTO `wqw_monsters` VALUES (351, 'Chaos', 351, 100, 2147483647, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 800, 100, 1000, 'None', 1, 'Chaoswolf', 'chaoswolf.swf', 'Chaorrupted Wolf', 100, '');
+INSERT INTO `wqw_monsters` VALUES (352, 'Chaos', 352, 150, 2000, 5, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 5000, 100, 2500, 'None', 1, 'ChaosBear', 'chaosbear.swf', 'Twisted Tooth', 100, '');
+INSERT INTO `wqw_monsters` VALUES (400, 'Dwakel', 400, 1500, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Dwakel3', 'Dwakel3.swf', 'Dwakel Blaster', 100, '');
+INSERT INTO `wqw_monsters` VALUES (401, 'Dwakel', 401, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Dwakel4', 'Dwakel4.swf', 'Dwakel Warrior', 100, '');
+INSERT INTO `wqw_monsters` VALUES (402, 'Dwakel', 402, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Dwakel3a', 'Dwakel3a.swf', 'Flamethrower Dwakel', 100, '');
+INSERT INTO `wqw_monsters` VALUES (403, 'Dwakel', 403, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Dwakelboss2', 'dwakelboss2.swf', 'Protosartorium', 100, '');
+INSERT INTO `wqw_monsters` VALUES (450, 'Cellar', 450, 100, 2000, 4, '102:1:1,37:1:0.1,808:1:.8', 800, 100, 512, 'None', 1, 'Ratgreen', 'ratgreen.swf', 'GreenRat', 100, '');
+INSERT INTO `wqw_monsters` VALUES (451, 'Cellar', 451, 100, 2000, 4, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 800, 100, 512, 'None', 1, 'Spider1', 'Spider1.swf', 'Spider', 100, '');
+INSERT INTO `wqw_monsters` VALUES (452, 'Cellar', 452, 100, 2000, 5, '23:1:1,37:1:0.1,808:1:.8', 800, 100, 1005, 'None', 1, 'Slime2', 'Slime2.swf', 'Purple Slime', 100, '');
+INSERT INTO `wqw_monsters` VALUES (453, 'Dragon', 453, 100, 2000, 12, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 2000, 'None', 1, 'Dragon3', 'Dragon3.swf', 'Greenguard Dragon', 100, '');
+INSERT INTO `wqw_monsters` VALUES (454, 'GreenGuard', 454, 100, 2000, 12, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 2500, 'None', 1, 'Eyemonster2', 'Eyemonster2.swf', 'DeathGazer', 100, '');
+INSERT INTO `wqw_monsters` VALUES (455, 'GreenGuard', 455, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 2500, 'None', 1, 'Basilisk1', 'Basilisk1.swf', 'Greenguard Basilisk', 100, '');
+INSERT INTO `wqw_monsters` VALUES (456, 'GreenGuard', 456, 100, 2000, 12, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 2500, 'None', 1, 'SlimeJello1', 'SlimeJello1.swf', 'Gell Oh No', 100, '');
+INSERT INTO `wqw_monsters` VALUES (457, 'GreenGuard', 457, 100, 2000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Wolfbrown', 'Wolfbrown.swf', 'Wolf', 100, '');
+INSERT INTO `wqw_monsters` VALUES (460, 'Sewer', 460, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Frogdrake', 'Frogdrake.swf', 'FrogDrake', 100, '');
+INSERT INTO `wqw_monsters` VALUES (461, 'Sewer', 461, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1750, 'None', 1, 'Worm1', 'Worm1.swf', 'Grumble', 100, '');
+INSERT INTO `wqw_monsters` VALUES (600, 'Twilight', 600, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Dreadspider', 'Dreadspider.swf', 'Dread Spider', 100, '');
+INSERT INTO `wqw_monsters` VALUES (601, 'Twilight', 601, 100, 2000, 5, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 3000, 'None', 1, 'Dreadspider2', 'Dreadspider2.swf', 'Abaddon', 100, '');
+INSERT INTO `wqw_monsters` VALUES (602, 'Twilight', 602, 100, 2000, 5, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1500, 'None', 1, 'Spider3A', 'Spider3A.swf', 'Burning SoulEater', 100, '');
+INSERT INTO `wqw_monsters` VALUES (603, 'Twilight', 603, 100, 2000, 5, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1500, 'None', 1, 'Spider3', 'Spider3.swf', 'Toxic SoulEater', 100, '');
+INSERT INTO `wqw_monsters` VALUES (604, 'Twilight', 604, 100, 2000, 5, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 5000, 'None', 1, 'Dreadspider3', 'Dreadspider3.swf', 'Gressil', 100, '');
+INSERT INTO `wqw_monsters` VALUES (605, 'Twilight', 605, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'CreeperBoss1', 'CreeperBoss1.swf', 'Cadaverous Creeper', 100, '');
+INSERT INTO `wqw_monsters` VALUES (606, 'Twilight', 606, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Porkypine', 'Porkypine.swf', 'RattleBones', 100, '');
+INSERT INTO `wqw_monsters` VALUES (660, 'Frost', 660, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Frogzard2', 'frogzard2.swf', 'FrostZard', 100, '');
+INSERT INTO `wqw_monsters` VALUES (661, 'Frost', 661, 100, 2000, 1, '102:1:1,37:1:0.1,808:1:.8', 1500, 100, 2500, 'None', 1, 'FrostScythe', 'FrostScythe.swf', 'FrostScythe', 100, '');
+INSERT INTO `wqw_monsters` VALUES (750, 'River', 750, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Fishman2', 'Fishman2.swf', 'River Fishman', 100, '');
+INSERT INTO `wqw_monsters` VALUES (751, 'River', 751, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Zardman2', 'Zardman2.swf', 'ZardMan Fisher', 100, '');
+INSERT INTO `wqw_monsters` VALUES (752, 'River', 752, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 3000, 'None', 1, 'Watermonster1', 'Watermonster1.swf', 'Kuro', 100, '');
+INSERT INTO `wqw_monsters` VALUES (753, 'Elemental', 753, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'Earth', 1, 'Rockelemental2', 'Rockelemental2.swf', 'Balboa', 100, '');
+INSERT INTO `wqw_monsters` VALUES (754, 'Dragon', 754, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 5000, 'None', 1, 'Dragon4', 'Dragon4.swf', 'Stalagbite', 100, '');
+INSERT INTO `wqw_monsters` VALUES (755, 'Vath', 755, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 6500, 'None', 1, 'Vath', 'Vath.swf', 'Vath', 100, '');
+INSERT INTO `wqw_monsters` VALUES (756, 'Sketch', 756, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 2000, 'None', 1, 'FrogzardSketch', 'FrogzardSketch.swf', 'Sketchy Frogzard', 100, '');
+INSERT INTO `wqw_monsters` VALUES (757, 'Dragon', 757, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 6500, 'None', 1, 'DragonSketch', 'DragonSketch.swf', 'Sketchy Dragon', 100, '');
+INSERT INTO `wqw_monsters` VALUES (758, 'Mythsong', 758, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'Fishman3Tuna', 'Fishman3Tuna.swf', 'Tune-A-Fish', 100, '');
+INSERT INTO `wqw_monsters` VALUES (759, 'Mythsong', 759, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1200, 'None', 1, 'Beetleman', 'Beetleman.swf', 'Beatles', 100, '');
+INSERT INTO `wqw_monsters` VALUES (760, 'Mythsong', 760, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 7000, 'None', 1, 'Frogdrake2', 'Frogdrake2.swf', 'French Horned Toadra', 100, '');
+INSERT INTO `wqw_monsters` VALUES (761, 'Elemental', 761, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 2500, 'Water', 1, 'Waterelemental', 'Waterelemental.swf', 'Water Elemental', 100, '');
+INSERT INTO `wqw_monsters` VALUES (762, 'Prison', 762, 100, 0, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1, 100, 600, 'None', 1, 'PrisonWall', 'PrisonWall.swf', 'Prison Wall', 100, '');
+INSERT INTO `wqw_monsters` VALUES (770, 'Undead', 770, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'UndeadWar1', 'UndeadWar1.swf', 'Skeletal Warrior', 100, '');
+INSERT INTO `wqw_monsters` VALUES (771, 'Undead', 771, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'None', 1, 'UndeadMage1', 'UndeadMage1.swf', 'Skeletal Ice Mage', 100, '');
+INSERT INTO `wqw_monsters` VALUES (775, 'None', 775, 100, 10000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 2000, 'None', 1, 'Sentrybot1', 'Sentrybot1.swf', 'Lightning Specialist', 100, '');
+INSERT INTO `wqw_monsters` VALUES (776, 'Elemental', 776, 100, 10000, 2, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1000, 100, 2000, 'Fire', 1, 'Fireelemental', 'Fireelemental-mini.swf', 'Pyrotechnician', 100, '');
+INSERT INTO `wqw_monsters` VALUES (850, 'J6', 850, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 600, 'None', 1, 'TrashCan', 'TrashCan.swf', 'Trash Can', 100, '');
+INSERT INTO `wqw_monsters` VALUES (851, 'J6', 851, 100000, 100000, 99, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 100000, 1000, 1000000, 'None', 1, 'J6Strong', 'J6Strong.swf', 'J6', 100, '');
+INSERT INTO `wqw_monsters` VALUES (859, 'chaos', 859, 100, 3000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 6000, 100, 1200, 'None', 1, 'NinjaNopper1', 'NinjaNopper1.swf', 'Ninja Nopperatu', 100, '');
+INSERT INTO `wqw_monsters` VALUES (860, 'None', 860, 100, 40000, 4, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 50000, 100, 4000, 'None', 1, 'Shredder1', 'Shredder1.swf', 'Kitsune', 100, '');
+INSERT INTO `wqw_monsters` VALUES (950, 'None', 950, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 1000, 'Ice', 1, 'Snowgolem', 'snowgolem.swf', 'Snow Golem', 100, '');
+INSERT INTO `wqw_monsters` VALUES (951, 'None', 951, 100, 2000, 1, '98:1:1,285:1:0.15,330:1:.65,425:1:0.3,807:1:1', 1500, 100, 6000, 'Ice', 1, 'Snowgolemboss', 'snowgolemboss.swf', 'Frosty', 100, '');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_passives`
+-- 
+
+CREATE TABLE `wqw_passives` (
+  `name` varchar(60) default NULL,
+  `icon` varchar(20) default NULL,
+  `desc` text,
+  `ref` varchar(10) default NULL,
+  `type` varchar(10) default NULL,
+  `id` int(10) NOT NULL auto_increment,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=12 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_passives`
+-- 
+
+INSERT INTO `wqw_passives` VALUES ('Agression', 'isp2', 'You deal 10% additional damage with physical attacks.', 'p1', 'passive', 1);
+INSERT INTO `wqw_passives` VALUES ('Resolute', 'isp2', 'Damage taken reduced by 10%', 'p2', 'passive', 2);
+INSERT INTO `wqw_passives` VALUES ('Elusive', 'isp2', 'Dodge chance increased by 15%', 'p1', 'passive', 6);
+INSERT INTO `wqw_passives` VALUES ('Incisive', 'isp2', 'Critical strike chance increased by 15%', 'p2', 'passive', 7);
+INSERT INTO `wqw_passives` VALUES ('Quick Like Lightning', 'isp2', 'Your Haste is increased by 15%', 'p1', 'passive', 8);
+INSERT INTO `wqw_passives` VALUES ('Ground', 'isp2', 'All damage taken is reduced by 10%', 'p2', 'passive', 9);
+INSERT INTO `wqw_passives` VALUES ('Hot Headed', 'isp2', 'Magic damage increased by 10%', 'p1', 'passive', 10);
+INSERT INTO `wqw_passives` VALUES ('Chilled Out', 'isp2', 'Damage taken reduced by 10%', 'p2', 'passive', 11);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_quests`
+-- 
+
+CREATE TABLE `wqw_quests` (
+  `id` int(5) NOT NULL,
+  `sFaction` char(32) NOT NULL default 'None',
+  `iLvl` int(10) default '1',
+  `factionID` tinyint(3) default '1',
+  `iClass` tinyint(2) default '0',
+  `iReqRep` int(11) default '0',
+  `iValue` int(11) default '0',
+  `iGold` int(32) default '0',
+  `iRep` int(11) default '0',
+  `turnin` text,
+  `sEndText` text,
+  `bUpg` tinyint(2) default '0',
+  `iReqCP` int(11) default '0',
+  `iExp` int(11) default '100',
+  `sName` varchar(32) default NULL,
+  `oItems` text,
+  `oRewards` text,
+  `bOnce` tinyint(3) default '0',
+  `sDesc` text,
+  `rewType` varchar(4) NOT NULL default 'S'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
+
+-- 
+-- Extraindo dados da tabela `wqw_quests`
+-- 
+
+INSERT INTO `wqw_quests` VALUES (11, 'None', 1, 1, 0, 0, 0, 0, 0, '112:5000', 'Go get that Badge!\r\n\r\nKNOWN BUG: You wont get the Badge more then once. Now since this is annoying, we will release the WHOLE SET for 1 Badge!', 0, 0, 100, 'Keep Killin', '112', '113', 0, 'WOAH! You asked Keep Killin? This is the Keep Killin'' Event, How to complete it?\r\nGet 1 Badge from a Sneevil or Slime everytime!', 'S');
+INSERT INTO `wqw_quests` VALUES (407, 'None', 100, 1, 0, 0, 0, 0, 0, '112:99999999999999999', 'You got that much badges? Cheater, aint possible, max is 500. Banned!', 0, 11, 100, 'Cheater', '112', '113:72:73:125', 0, 'Nty, Impossible!', 'C');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_screens`
+-- 
+
+CREATE TABLE `wqw_screens` (
+  `id` int(11) NOT NULL auto_increment,
+  `act` int(1) NOT NULL,
+  `foto` text NOT NULL,
+  `data` date NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_screens`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_servers`
+-- 
+
+CREATE TABLE `wqw_servers` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(20) default NULL,
+  `ip` varchar(15) NOT NULL,
+  `count` smallint(5) NOT NULL default '0',
+  `max` smallint(5) NOT NULL default '255',
+  `online` tinyint(1) NOT NULL default '1',
+  `bchat` tinyint(1) NOT NULL default '0',
+  `ichat` tinyint(1) NOT NULL default '0',
+  `upgrade` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_servers`
+-- 
+
+INSERT INTO `wqw_servers` VALUES (2, 'NeoRider', '127.0.0.1', -2, 255, 0, 2, 2, 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_settings`
+-- 
+
+CREATE TABLE `wqw_settings` (
+  `name` varchar(64) NOT NULL,
+  `AQWname` varchar(64) NOT NULL default 'MTWorlds',
+  `version` decimal(4,0) NOT NULL,
+  `message` text NOT NULL,
+  `Top15` varchar(64) NOT NULL default 'MTGames',
+  `loaderSWF` varchar(64) NOT NULL,
+  `NewUserSWF` varchar(64) NOT NULL default 'protomen/gamefiles/newuser/newuser',
+  `gameFile` varchar(64) NOT NULL,
+  `gameFilePTR` varchar(64) NOT NULL,
+  `newsFile` varchar(64) NOT NULL,
+  `mapFile` varchar(64) NOT NULL,
+  `bookFile` varchar(64) NOT NULL,
+  `xprate` int(11) NOT NULL,
+  `goldrate` int(11) NOT NULL,
+  `mondmgrate` int(11) NOT NULL,
+  `event` text,
+  `accesscode` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Extraindo dados da tabela `wqw_settings`
+-- 
+
+INSERT INTO `wqw_settings` VALUES ('MTGames', 'MTWorlds', 1, 'GM nao pede senha ! fique atento nao passe dados cadastrais para outras pessoas !', 'MTGames', 'Loader', 'protomen/gamefiles/newuser/aw-newuser_07', 'Game_live_2010_V1.swf', 'Game_ptr_2010_06_25_B.swf', 'news/News-02Jul10.swf', 'news/Map-3Jun10.swf', 'news/Book-24June10.swf', 2, 2, 5, '', 'epicfailureisbad');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_shops`
+-- 
+
+CREATE TABLE `wqw_shops` (
+  `id` int(11) NOT NULL auto_increment,
+  `shopid` int(11) NOT NULL,
+  `strName` varchar(32) NOT NULL,
+  `items` text NOT NULL,
+  `sField` varchar(16) NOT NULL default '',
+  `bStaff` tinyint(1) NOT NULL default '0',
+  `bHouse` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=32 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_shops`
+-- 
+
+INSERT INTO `wqw_shops` VALUES (1, 12, 'Pet Shop', '', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (2, 10, 'Upgrade Shop', '3,5,6,7,8,9,10,53,114,120,121,122,123,124,1004,4009,4010,4011,4012,4642,4645,1111,2222', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (3, 41, 'Armour Shop', '5003,107,4878,4620,4632,4654,4005,4025,127,999,5015', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (4, 16, 'Yulgar Weapon Shop', '4673,13,14,15', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (5, 11, 'AC Shop', '52,1000', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (6, 69, 'Suggestion Shop', '5004,5005,5007,5008,5010,5011,5012,5013,5014', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (8, 13, 'Magic Shop', '', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (11, 31, 'Robe Shop', '', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (14, 0, 'Vip Shop', '', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (17, 43, 'Punt Shop', '', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (20, 141, 'Fighter Enhance Shop', '63,4644', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (21, 144, 'Wizard Enhance Shop', '63', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (22, 145, 'Healer Enhance Shop', '63', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (23, 143, 'Hybrid Enhance Shop', '63', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (24, 147, 'Lucky Enhance Shop', '3077,63,4643', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (25, 142, 'Theif Enhance Shop', '63', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (26, 181, 'PTR Shop', '4637,886', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (27, 163, 'Miltonius Items', '', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (28, 4554, 'Staff Shop', '106,107,108,109,110,111,115,116,117,118,125,127,128,1000,1001,1003,4640,4641', '', 1, 0);
+INSERT INTO `wqw_shops` VALUES (29, 49, 'Quibble Shop (Icy)', '4646,4648,4650,4651,4652,4654', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (30, 103, 'SkullWraith Shop', '4649', '', 0, 0);
+INSERT INTO `wqw_shops` VALUES (31, 71, 'buy a House', '52', '', 0, 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_skills`
+-- 
+
+CREATE TABLE `wqw_skills` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(32) NOT NULL,
+  `anim` varchar(60) NOT NULL,
+  `desc` text NOT NULL,
+  `mana` int(11) NOT NULL,
+  `icon` varchar(32) NOT NULL,
+  `range` int(5) NOT NULL,
+  `dsrc` varchar(8) NOT NULL,
+  `ref` varchar(3) NOT NULL,
+  `tgt` varchar(2) NOT NULL,
+  `typ` varchar(3) NOT NULL,
+  `str1` varchar(32) NOT NULL,
+  `auto` varchar(6) NOT NULL,
+  `cd` int(5) NOT NULL,
+  `aura` varchar(60) NOT NULL,
+  `tgtMax` int(10) NOT NULL,
+  `tgtMin` int(5) NOT NULL,
+  `fx` varchar(20) default 'm',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=50 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_skills`
+-- 
+
+INSERT INTO `wqw_skills` VALUES (1, 'The Ultimate Combo X', 'Attack1,Attack2,Thrash,Attack3,Cast1,Cast2,Stab', 'The ultimate oombination of skills of ninjas and protosartorias, they attack fiercely without doubts.', 0, 'imr1,iwsword2', 201, 'APSP1', 'aa', 'h', 'aa', 'sp_ee2', 'true', 1500, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (2, 'Rapid Attack', 'Thrash', 'Taught well by the ninjas, attacks as twice as they usually do, enemies are surprised by this attack.', 12, 'ied2,iiclass2', 801, 'AP2', 'a1', 'h', 'p', 'sp_ee2', 'false', 2300, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (3, 'Critical Strike', 'Attack3', 'The way of the hybrids, attacks the enemy with 100% critical chance that is feared by others.', 30, 'imd1,ied2,iwdagger', 801, 'AP2', 'a2', 'h', 'p', 'sp_ee2', 'false', 5000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (4, 'Claw Lightning', 'Stab', 'Taught well by the protosartorias, attacks the enemy with lightning that is not basically that powerful.', 25, 'iee2,iwclaws', 801, 'APSP2', 'a3', 'h', 'pm', 'lit1', 'false', 6000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (5, 'Heavy Attack', 'Attack4', 'Overwhelming attack that is very powerful enough that will make the enemy go... what???', 20, 'imr1,iwaxe', 801, 'APSP2', 'a4', 'h', 'p', 'sp_ee1', 'false', 12000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (7, 'Auto Attack', 'Attack1,Attack2', 'A basic attack, taught to all adventurers.', 0, 'iwd1', 301, 'AP2', 'aa', 'h', 'aa', '', 'true', 2000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (8, 'Fireball', 'Cast2', 'Hurls flame at your opponent, dealing moderate damage on impact, and dealing that same amount again over 10 seconds.  Deals more impact damage if Frozen Blood is present on the target, but consumes the debuff.', 20, 'ief1', 808, 'Mage1', 'a1', 'h', 'ma', 'sp_ef1', 'false', 6000, '', 0, 0, 'p');
+INSERT INTO `wqw_skills` VALUES (9, 'Ice Shard', 'Cast2', 'Launches a freezing shard at your enemy, dealing moderate damage.  If Scorched is NOT present, applies Frozen Blood, reducing their attack speed and power for 10 seconds. If Scorched IS present, deals increased damage but does not apply Frozen Blood.', 10, 'iei2', 808, 'Mage2', 'a2', 'h', 'ma', 'sp_ice1', 'false', 6000, '', 0, 0, 'p');
+INSERT INTO `wqw_skills` VALUES (10, 'Explosion', 'Attack3', 'Causes energies within opponent to become unstable and burst forth, causing moderate damage to your target and light damage to surrounding targets.', 15, 'ime2', 808, 'AoE1', 'a3', 'h', 'ma', 'sp_ef2', 'false', 3000, '', 4, 1, 'w');
+INSERT INTO `wqw_skills` VALUES (11, 'Arcane Shield', 'Cast3', 'Shield the caster, transferring most incoming damage to their MP instead of HP and reducing outgoing damage for 20 seconds.', 5, 'isi1', 808, '', 'a4', 's', 'ma', 'sp_ee1', 'false', 60000, 'Arcane Shield,20', 0, 0, 'w');
+INSERT INTO `wqw_skills` VALUES (12, 'Auto attack', 'Attack1,Attack2', 'A rapid attack studied only by a reclusive few.', 0, 'iwd1', 301, 'AP2', 'aa', 'h', 'aa', '', 'true', 1500, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (13, 'Crosscut', 'Thrash', 'Instantly attack twice, dealing extra damage.', 15, 'imr1,iwd1', 301, 'AP2', 'a1', 'h', 'p', '', 'false', 2000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (14, 'Shadowblade', 'Attack3', 'Deals physical and magical damage, and blinds enemy for 6 seconds', 25, 'ied2,iwsword', 301, 'APSP2', 'a2', 'h', 'pm', 'sp_ed1', 'false', 12000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (15, 'Shadowburn', 'Attack4', 'Deals light weapon damage plus magical damage, stunning any target afflicted by Shadowblade for 3s, or returning 20 mana otherwise', 5, 'ied2,ief2', 808, 'APSP2', 'a3', 'h', 'pm', '', 'false', 6000, 'Shadowburn,3', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (16, 'Thin Air', 'Bow', 'Raises dodge by 3% and haste by 5% every time you are hit.  Lasts 30s', 30, 'iea1', 301, 'APSP2', 'a4', 'f', 'm', '', 'false', 20000, 'Thin Air,30', 0, 0, 'p');
+INSERT INTO `wqw_skills` VALUES (17, 'Jackhammer', 'Thrash', 'A rapid assault dealing 150% weapon damage, cannot be avoided but also cannot crit', 30, 'ims2,iwmace', 301, 'AP2', 'a1', 'h', 'pm', '', 'false', 4000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (18, 'Plasma Bolt', 'Cast2', 'An energy-based ranged attack dealing physical and magical damage', 25, 'iee2', 808, 'APSP1', 'a2', 'h', 'pm', 'sp_ee1', 'false', 8000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (19, 'Arc Lightning', 'Cast3', 'Emits a burst of electrical energy that will bounce to up to 4 targets, dealing more damage with each bounce.', 30, 'imr2,iee2', 808, 'chain1', 'a3', 'h', 'pm', 'lit1', 'false', 10000, '', 4, 1, 'c');
+INSERT INTO `wqw_skills` VALUES (20, 'Event Horizon', 'Attack4', 'Reduces all incoming damage by an amount based on Attack Power for 20 seconds', 30, 'iwshield,ims1', 301, '', 'a4', 's', 'pm', '', 'false', 60000, 'Event Horizon,20', 0, 0, 'p');
+INSERT INTO `wqw_skills` VALUES (26, 'Bane of Scales', 'Cast2', 'Taunts a dragon, forcing it to attack you, while reducing the dragon''s damage dealt with all attacks by 30%.  Lasts 10 seconds. (Doesn''t work :P)', 50, 'iwshield,ied2', 808, '', 'a1', '', 'ma', 'sp_ei3', 'false', 16000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (27, 'Impale', 'Attack4', 'Causes 200% of weapon damage over 12 seconds, and has a chance of stunning the target for 3 seconds.', 20, 'imr2,iwpolearm', 301, '', 'a2', 'h', 'p', '', 'false', 12000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (28, 'Scorched Steel', 'Attack3', 'A fiery attack dealing 150% weapon damage.', 60, 'ief2,iwsword2', 301, 'AP2', 'a3', 'h', 'ma', '', 'false', 6000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (29, 'Talon Twisting', 'Attack4', 'If used while in combat with a dragon, 50% of damage done to you will be added to your attacks.  Last 8 seconds.', 70, 'ims4,isp1', 808, '', 'a4', 'h', 'ma', '', 'false', 12000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (40, 'Potions', 'Cheer', 'Equip a potion or scroll from your inventory to use it here.', 0, 'icu1', 808, '', 'i1', 'f', 'i', '', 'false', 20000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (41, 'Breaker', 'Attack3', 'Deals weapon DPS as damage and reduces opponents damage output significantly for 4 seconds', 30, 'imr1,iwaxe', 301, 'AP1', 'a1', 'h', 'p', '', 'false', 8000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (42, 'Broadside', 'Attack2', 'Deals critical damage perfectly enough to pawned your enemies', 35, 'ims2,iwsword', 301, 'AP2', 'a2', 'h', 'p', '', 'false', 8000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (43, 'Blood for Blood', 'Stab', 'Deals damage based on the difference between your current and maximum HP.', 30, 'iss1', 301, 'HPd', 'a3', 'h', 'p', '', 'false', 10000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (44, 'Forgone Conclusion', 'Point', 'Increases damage by 10 and attacks the enemy. \r\n The effect fades immediately after usage, you will receive a small percentage of damage dealt under its effects as health.', 20, 'ied1', 301, '', 'a4', 's', 'p', '', 'false', 30000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (45, 'Auto attack', 'Attack1,Attack2', 'A strong attack known only to disciplined fighters.', 0, 'iwd1', 303, 'AP2', 'aa', 'h', 'aa', '', 'true', 2000, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (46, 'Forgone Conclusion', 'Point', 'Increases damage by 10 and attacks the enemy. \r\n The effect fades immediately after usage, you will receive a small percentage of damage dealt under its effects as health.', 20, 'ied1', 4000, '', 'a4', 's', 'p', '', 'false', 300, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (47, 'Scorched Steel', 'Attack3', 'A fiery attack dealing 150% weapon damage.', 60, 'ief2,iwsword2', 4000, 'AP2', 'a3', 'h', 'ma', '', 'false', 600, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (48, 'Talon Twisting', 'Attack4', 'If used while in combat with a dragon, 50% of damage done to you will be added to your attacks.  Last 8 seconds.', 70, 'ims4,isp1', 5000, '', 'a4', 'h', 'ma', '', 'false', 1200, '', 0, 0, 'm');
+INSERT INTO `wqw_skills` VALUES (49, 'Bane of Scales', 'Cast2', 'Taunts a dragon, forcing it to attack you, while reducing the dragon''s damage dealt with all attacks by 30%.  Lasts 10 seconds. (Doesn''t work :P)', 5, 'iwshield,ied2', 6000, '', 'a1', '', 'ma', 'sp_ei3', 'false', 1600, '', 0, 0, 'm');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_skills_auras`
+-- 
+
+CREATE TABLE `wqw_skills_auras` (
+  `id` int(12) NOT NULL auto_increment,
+  `name` varchar(60) NOT NULL default 'Aura',
+  `seconds` tinyint(12) NOT NULL default '5',
+  `iscrit` tinyint(1) NOT NULL default '1',
+  `reduction` int(11) NOT NULL default '0',
+  `damage` varchar(10) NOT NULL default '1.5',
+  `cat` varchar(12) NOT NULL default '',
+  `type` varchar(15) NOT NULL default 'passive',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=5 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_skills_auras`
+-- 
+
+INSERT INTO `wqw_skills_auras` VALUES (1, 'Prepared Strike', 12, 1, 0, '2', 'stun', 'active');
+INSERT INTO `wqw_skills_auras` VALUES (2, 'Thin Air', 30, 0, 0, '2', '', 'passive');
+INSERT INTO `wqw_skills_auras` VALUES (3, 'Arcane Shield', 20, 0, 0, '0', '', 'passive');
+INSERT INTO `wqw_skills_auras` VALUES (4, 'Event Horizon', 20, 0, 2147483647, '1.5', '', 'passive');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `wqw_users`
+-- 
+
+CREATE TABLE `wqw_users` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(32) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `access` smallint(2) NOT NULL default '5',
+  `upgrade` tinyint(1) NOT NULL default '0',
+  `age` smallint(3) NOT NULL,
+  `upgDate` datetime default '0000-00-00 00:00:00',
+  `upgDays` smallint(3) NOT NULL default '-1',
+  `emailActive` tinyint(1) NOT NULL default '5',
+  `email` varchar(64) NOT NULL default 'none',
+  `admin` tinyint(1) NOT NULL default '0',
+  `moderator` tinyint(1) NOT NULL default '0',
+  `level` int(3) NOT NULL default '1',
+  `cosColorAccessory` int(8) NOT NULL default '0',
+  `cosColorBase` int(8) NOT NULL default '0',
+  `cosColorTrim` int(8) NOT NULL default '0',
+  `plaColorSkin` int(8) NOT NULL default '13088131',
+  `plaColorHair` int(8) NOT NULL default '7027237',
+  `plaColorEyes` int(8) NOT NULL default '91294',
+  `slotBag` int(3) NOT NULL default '40',
+  `slotBank` tinyint(3) NOT NULL default '10',
+  `slotHouse` tinyint(3) NOT NULL default '20',
+  `STR` smallint(3) NOT NULL default '0',
+  `DEX` smallint(3) NOT NULL default '0',
+  `INT` smallint(3) NOT NULL default '0',
+  `END` smallint(3) NOT NULL default '0',
+  `WIS` smallint(3) NOT NULL default '0',
+  `LCK` smallint(3) NOT NULL default '0',
+  `currentClass` smallint(2) NOT NULL default '2',
+  `xp` int(40) NOT NULL default '0',
+  `gold` int(40) NOT NULL default '0',
+  `coins` int(40) NOT NULL default '0',
+  `lastVisited` varchar(32) NOT NULL default '',
+  `hairID` smallint(3) NOT NULL default '52',
+  `gender` varchar(1) NOT NULL default 'M',
+  `hairName` varchar(16) NOT NULL default 'Default',
+  `hairFile` varchar(128) NOT NULL default 'hair/M/Default.swf',
+  `curServer` varchar(16) NOT NULL default 'Offline',
+  `banned` tinyint(1) NOT NULL default '0',
+  `vip` tinyint(1) NOT NULL default '0',
+  `ug` tinyint(1) NOT NULL default '0',
+  `dob` varchar(32) NOT NULL default '0/0/0000',
+  `signupip` varchar(16) NOT NULL default '''''',
+  `loginip` varchar(16) NOT NULL default '''''',
+  `killed` int(11) NOT NULL default '0',
+  `pvpkill` int(11) NOT NULL,
+  `monkill` int(11) NOT NULL,
+  `bFriend` tinyint(1) NOT NULL default '1',
+  `bWhisper` tinyint(1) NOT NULL default '1',
+  `bTT` tinyint(1) NOT NULL default '1',
+  `bParty` tinyint(1) NOT NULL default '1',
+  `bGoto` tinyint(1) NOT NULL default '1',
+  `chartype` varchar(255) NOT NULL default 'Adventurer',
+  `iCP` int(16) NOT NULL default '29605',
+  `uoName` varchar(32) NOT NULL,
+  `mlvl` int(3) NOT NULL,
+  `slvl` int(3) NOT NULL,
+  `rankm` int(3) NOT NULL,
+  `ranks` int(3) NOT NULL,
+  `avatar` varchar(50) NOT NULL,
+  `nrps` int(11) NOT NULL default '0',
+  `vencimento` varchar(11) NOT NULL,
+  `autoriza` int(1) NOT NULL default '0',
+  `cash` int(11) NOT NULL default '0',
+  `acesso` int(1) NOT NULL default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=22 ;
+
+-- 
+-- Extraindo dados da tabela `wqw_users`
+-- 
+
+INSERT INTO `wqw_users` VALUES (1, 'NeoRider', 'j6t2hybt26', 15, 0, 2010, '0000-00-00 00:00:00', 0, 5, 'dragracerj@gmail.com', 1, 0, 3064, 16777215, 16777215, 16777215, 14460011, 4786437, 16711680, 40, 10, 20, 100, 100, 100, 100, 100, 100, 19, 0, 782406, 949149, 'battleon-1', 64, 'M', 'Normal2', 'hair/M/Normal2.swf', 'Offline', 0, 0, 0, '3/23/1990', '74.126.67.19', '127.0.0.1', 0, 0, 202, 1, 1, 1, 1, 1, 'Adiminstrador', 29605, '', 0, 0, 0, 0, '', 0, '', 1, 0, 1);
+INSERT INTO `wqw_users` VALUES (2, 'Guardiao_GT', 'breno123456', 15, 0, 2010, '0000-00-00 00:00:00', 0, 5, 'peagaefiaejf@foaskga.com', 0, 1, 3064, 16777215, 16777215, 3559294, 15121555, 3157797, 5664435, 40, 10, 20, 0, 0, 0, 0, 0, 0, 9, 83152, 804456, 999850, 'battleon-1', 247, 'M', 'Ziohair1', 'hair/M/Ziohair1.swf', 'Offline', 0, 0, 0, '9/28/1990', '189.26.183.170', '127.0.0.1', 1, 0, 486, 1, 1, 1, 1, 1, 'GameMaster', 29605, '', 0, 0, 0, 0, '', 0, '', 0, 0, 1);
+INSERT INTO `wqw_users` VALUES (3, 'Lunah', 'lunah123456', 45, 0, 2010, '0000-00-00 00:00:00', 0, 5, 'subwaydivi@live.com', 0, 1, 71, 0, 0, 0, 15121555, 2500663, 7065902, 40, 10, 20, 0, 0, 0, 0, 0, 0, 16, 0, 970000, 999850, 'battleon-1', 29, 'F', 'Bangs2Long', 'hair/F/Bangs2Long.swf', 'Offline', 0, 1, 0, '5/20/1980', '71.30.69.13', '127.0.0.1', 1, 1, 197, 1, 1, 1, 1, 1, 'GameMaster', 29605, '', 0, 0, 0, 0, '', 0, '', 0, 0, 1);
+INSERT INTO `wqw_users` VALUES (4, 'Felipeleo', 'felipeleo123456', 50, 0, 2010, '0000-00-00 00:00:00', 0, 5, 'Darksin355@gmail.com', 0, 1, 70, 0, 0, 0, 14460011, 2500663, 16777215, 40, 10, 20, 0, 0, 0, 0, 0, 0, 11, 0, 850000, 1000000, 'yulgar-1', 111, 'M', 'Feathered1', 'hair/M/Feathered1.swf', 'Offline', 0, 1, 0, '1/01/1991', '173.32.233.191', '127.0.0.1', 9, 1, 213, 1, 1, 1, 1, 1, 'GameMaster', 29605, '', 0, 0, 0, 0, '', 0, '', 0, 0, 1);
+INSERT INTO `wqw_users` VALUES (5, 'Gabriel', 'gabriel123456', 50, 0, 2010, '0000-00-00 00:00:00', 0, 5, 'dalton_hastey@yahoo.com', 0, 1, 70, 0, 0, 0, 15532011, 2037277, 16187906, 40, 10, 20, 0, 0, 0, 0, 0, 0, 9, 0, 99900, 99900, 'yulgar-1', 52, 'M', 'Default', 'hair/M/Default.swf', 'Offline', 0, 0, 0, '1/01/1990', '24.72.180.116', '127.0.0.1', 1, 0, 12, 1, 1, 1, 1, 1, 'GameMaster', 29605, '', 0, 0, 0, 0, '', 0, '', 0, 0, 1);
+INSERT INTO `wqw_users` VALUES (6, 'pakuto', 'j6t2hybt26', 35, 0, 2010, '0000-00-00 00:00:00', -1, 5, 'ampyfailz@hotmail.com', 0, 1, 70, 7746331, 8542790, 0, 15388042, 7753511, 26367, 40, 10, 20, 0, 0, 0, 0, 0, 0, 4, 57076, 920038, 1000000, 'battleon-1', 61, 'M', 'Normal', 'hair/M/Normal.swf', 'Offline', 0, 2, 0, '5/21/1996', '216.251.192.151', '127.0.0.1', 2, 2, 172, 1, 1, 1, 1, 1, 'GameMaster', 29605, '', 0, 0, 0, 0, '', 0, '', 0, 0, 1);
+INSERT INTO `wqw_users` VALUES (7, 'falken', 'falken123456', 30, 0, 2010, '0000-00-00 00:00:00', -1, 5, 'none', 0, 0, 70, 0, 0, 0, 13088131, 7027237, 16777215, 40, 10, 20, 0, 0, 0, 0, 0, 0, 9, 0, 785900, 1000000, 'battleon-1', 64, 'M', 'Normal2', 'hair/M/Normal2.swf', 'Offline', 0, 0, 0, '0/0/0000', '''''', '127.0.0.1', 0, 0, 0, 1, 1, 1, 1, 1, 'GameMaster', 29605, '', 0, 0, 0, 0, '', 0, '', 0, 0, 1);
