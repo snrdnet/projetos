@@ -1,7 +1,0 @@
-[INIT]Modulo LOG iniciado com sucesso.
-[INIT]Iniciando Modulo SQL
-[SQL]Conectando ao Servidor:localhost porta:3306 Base:solus User:root
-[SQL]Modulo SQL Online.
-[INIT]Iniciando SOLUS
-[SOLUS]SOLUS iniciado com sucesso.
-[INIT]Iniciando Interface Grafica
